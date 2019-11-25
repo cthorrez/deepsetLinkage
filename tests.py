@@ -31,6 +31,8 @@ def train():
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
             hac = HAC(pairs, gt_clusters, model, margin=margin)
             hac.train_epoch()
+            if idx == 1:
+                exit(1)
 
 
 

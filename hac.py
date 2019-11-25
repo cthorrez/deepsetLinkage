@@ -31,10 +31,14 @@ class HAC():
 
     def get_feature_tensor(self):
         feature_tensor = {}
+        feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.pair_dim)))
+
+
         for j in range(self.n_points):
             for i in range(j):
                 # i < j
-                feature_tensor[i,j] = self.model.featurize(self.pairs[(i,j)].unsqueeze(0))
+                #feature_tensor[i,j] = self.model.featurize(self.pairs[(i,j)].unsqueeze(0)) # dictionary version
+                feature_tensor[i,j,:] = self.model.featurize(self.pairs[(i,j)]) # tensor version 
         return feature_tensor
 
     def get_linkage_matrix(self):
@@ -43,7 +47,7 @@ class HAC():
         for j in range(self.n_points):
             for i in range(j):
                 # i < j
-                linkage_matrix[i,j] = self.model.score(self.feature_tensor[i,j]).squeeze()
+                linkage_matrix[i,j] = self.model.score(self.feature_tensor[i,j].unsqueeze(0)).squeeze()
 
         return linkage_matrix
 
@@ -160,7 +164,7 @@ class HAC():
 
 
     def check_cluster_pair_pure(self, left_idxs, right_idxs):
-        all_idxs = np.array(sorted(left_idxs) + sorted(right_idxs))
+        all_idxs = np.array(left_idxs + right_idxs)
         preds = self.gt_clusters[all_idxs]
         pred0 = preds[0]
         return int(np.all(preds==pred0))
@@ -172,16 +176,27 @@ class HAC():
         right_idxs = self.cluster_idxs[c2]
 
         # do their cross product
-        cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
         
-        # get the features from self.pairs and put them in a big tensor
-        point_pair_features = []
-        for idx,(pid1, pid2) in enumerate(cross_cluster_pairs):
-            a,b = min(pid1, pid2), max(pid1,pid2)
-            # point_pair_features.append(self.pairs[(a,b)])
-            point_pair_features.append(self.feature_tensor[a,b])
+        # cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
+        # # get the features from self.pairs and put them in a big tensor
+        # point_pair_features = []
+        # for idx,(pid1, pid2) in enumerate(cross_cluster_pairs):
+        #     a,b = min(pid1, pid2), max(pid1,pid2)
+        #     # point_pair_features.append(self.pairs[(a,b)])
+        #     point_pair_features.append(self.feature_tensor[a,b])
 
-        return torch.stack(point_pair_features)
+        # return torch.stack(point_pair_features)
+
+
+        #cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
+        #cross_cluster_pairs = torch.LongTensor(cross_cluster_pairs)
+
+        cross_cluster_pairs = torch.LongTensor(np.meshgrid(left_idxs, right_idxs)).transpose(0,2).reshape(-1,2)
+        mins = torch.min(cross_cluster_pairs, dim=1).values
+        maxes = torch.max(cross_cluster_pairs, dim=1).values
+        point_pair_features = self.feature_tensor[mins, maxes,:]
+        return point_pair_features
+
 
         
 
