@@ -11,8 +11,11 @@ from eval_utils import pairwise_f1
 class HAC():
     def __init__(self, pairs, gt_clusters, model, margin, use_gpu=False):
         self.device = torch.device('cpu')
-        if torch.cuda.is_available() and use_gpu:
-            self.device = torch.cuda.device(0)
+        if use_gpu:
+            if torch.cuda.is_available():
+                self.device = torch.cuda.device(0)
+            else:
+                print('use_gpu is True but GPU is not available, using CPU')
 
 
         self.pairs = pairs

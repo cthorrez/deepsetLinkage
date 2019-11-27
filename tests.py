@@ -4,11 +4,15 @@ from hac import HAC
 from models import DeepSetLinkage
 from utils import process_pair_features, single_linkage, average_linkage, complete_linkage, l2norm
 import gc
+import sys
+import json
 
 
-def train():
+def train(args):
     blocks = ['allen_d', 'moore_a', 'lee_l', 'robinson_h',
               'mcguire_j', 'blum_a', 'jones_s', 'young_s' ]
+
+    use_gpu = args['use_gpu']
 
     seed = 0
     np.random.seed(seed)
@@ -37,7 +41,7 @@ def train():
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(tb), delimiter=',', dtype=np.float)
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
-            hac = HAC(pairs, gt_clusters, model, margin=margin)
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
 
             hac.train_epoch()
             
@@ -53,11 +57,17 @@ def train():
 
 
 
-def main():
-    train()
+def main(args):
+    train(args)
 
 
 
 
 if __name__ == '__main__':
-    main()
+    cfg = 'config.json'
+    if len(sys.argv) > 1:
+        cfg = sys.argv[1]
+
+    args = json.load(open(cfg))
+    
+    main(args)
