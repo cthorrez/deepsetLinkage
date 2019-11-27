@@ -13,7 +13,7 @@ class HAC():
         self.device = torch.device('cpu')
         if use_gpu:
             if torch.cuda.is_available():
-                self.device = torch.cuda.device(0)
+                self.device = torch.device('cuda:0')
             else:
                 print('use_gpu is True but GPU is not available, using CPU')
 
