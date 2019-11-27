@@ -31,6 +31,7 @@ def train(args):
     # train_blocks = ['lee_l']
     train_blocks = ['moore_a']
     # train_blocks = ['jones_s']
+    # train_blocks = ['allen_d'] # smallest
 
     for epoch in range(num_epochs):
         print('epoch:', epoch)

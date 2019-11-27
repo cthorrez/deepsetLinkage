@@ -37,15 +37,9 @@ def process_pair_features(pair_features):
     for row in pair_features:
         i, j = row[:2]
         i, j = int(i), int(j)
-        pairs[(i,j)] = torch.FloatTensor(row[2:-1])
+        pairs[(i,j)] = torch.tensor(row[2:-1], dtype=torch.float, requires_grad=True)
+        # pairs[(i,j)] = torch.FloatTensor(row[2:-1])
     return pairs
-
-
-
-
-
-
-
 
 
 
