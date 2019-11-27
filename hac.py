@@ -9,13 +9,18 @@ from eval_utils import pairwise_f1
 
 
 class HAC():
-    def __init__(self, pairs, gt_clusters, model, margin):
+    def __init__(self, pairs, gt_clusters, model, margin, use_gpu=False):
+        self.device = torch.device('cpu')
+        if torch.cuda.is_available() and use_gpu:
+            self.device = torch.cuda.device(0)
+
+
         self.pairs = pairs
         self.pair_dim = pairs[list(self.pairs.keys())[0]].shape[0]
         self.n_points = len(gt_clusters)
 
         self.gt_clusters = gt_clusters
-        self.model = model
+        self.model = model.to(self.device)
         self.margin = margin
  
         self.cluster_idxs = {i:[i] for i in range(self.n_points)}
@@ -31,14 +36,14 @@ class HAC():
 
     def get_feature_tensor(self):
         feature_tensor = {}
-        feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.pair_dim)))
+        # feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.pair_dim)))
 
 
         for j in range(self.n_points):
             for i in range(j):
                 # i < j
-                #feature_tensor[i,j] = self.model.featurize(self.pairs[(i,j)].unsqueeze(0)) # dictionary version
-                feature_tensor[i,j,:] = self.model.featurize(self.pairs[(i,j)]) # tensor version 
+                feature_tensor[i,j] = self.model.featurize(self.pairs[(i,j)].to(self.device)) # dictionary version
+                # feature_tensor[i,j,:] = self.model.featurize(self.pairs[(i,j)]) # tensor version 
         return feature_tensor
 
     def get_linkage_matrix(self):
@@ -124,38 +129,23 @@ class HAC():
                     min_pure_cluster_pair = (a,b)
 
 
+
         # if there are no pure mergers left
         if pure_mask.sum() == 0:
             # print('no pure mergers left')
             return None, True, (0,1)
 
-        pure_cluster_linkages = cluster_pair_linkages[pure_mask]
         dirty_cluster_linkages = cluster_pair_linkages[pure_mask==0]
 
 
-
         dirty_diffs = self.margin - dirty_cluster_linkages
-        dirty_losses = dirty_diffs[dirty_diffs>0]
-
-        pure_diffs = pure_cluster_linkages + self.margin
-        pure_losses = pure_diffs[pure_diffs>0]
-
-        losses = torch.cat([dirty_losses, pure_losses])
-        loss = losses.mean()
-
-        # min_pure = torch.min(pure_cluster_linkages)
+        dirty_loss = dirty_diffs[dirty_diffs>0].sum()
         
-        # dirty_diffs = min_pure - dirty_cluster_linkages
-        # pure_diffs = min_pure - pure_cluster_linkages
+        min_pure_diff = min_pure_linkage + self.margin
+        
 
-        # dirty_losses = 
-
-
-        # # loss = torch.mean(pos_diffs)
-        # if (pos_diffs>0).sum() == 0:
-        #     loss = 0
-        # else:
-        #     loss = torch.mean(pos_diffs[pos_diffs>0])
+        n_impure = (pure_mask==0).sum()
+        loss = (dirty_loss + min_pure_diff)/(n_impure + 1)
 
 
 
@@ -177,44 +167,45 @@ class HAC():
 
         # do their cross product
         
-        # cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
-        # # get the features from self.pairs and put them in a big tensor
-        # point_pair_features = []
-        # for idx,(pid1, pid2) in enumerate(cross_cluster_pairs):
-        #     a,b = min(pid1, pid2), max(pid1,pid2)
-        #     # point_pair_features.append(self.pairs[(a,b)])
-        #     point_pair_features.append(self.feature_tensor[a,b])
+        cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
+        # get the features from self.pairs and put them in a big tensor
+        point_pair_features = []
+        for idx,(pid1, pid2) in enumerate(cross_cluster_pairs):
+            a,b = min(pid1, pid2), max(pid1,pid2)
+            # point_pair_features.append(self.pairs[(a,b)])
+            point_pair_features.append(self.feature_tensor[a,b])
 
-        # return torch.stack(point_pair_features)
+        return torch.stack(point_pair_features)
 
 
-        #cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
-        #cross_cluster_pairs = torch.LongTensor(cross_cluster_pairs)
 
-        cross_cluster_pairs = torch.LongTensor(np.meshgrid(left_idxs, right_idxs)).transpose(0,2).reshape(-1,2)
-        mins = torch.min(cross_cluster_pairs, dim=1).values
-        maxes = torch.max(cross_cluster_pairs, dim=1).values
-        point_pair_features = self.feature_tensor[mins, maxes,:]
-        return point_pair_features
+        # cross_cluster_pairs = torch.LongTensor(np.meshgrid(left_idxs, right_idxs)).transpose(0,2).reshape(-1,2)
+        # mins = torch.min(cross_cluster_pairs, dim=1).values
+        # maxes = torch.max(cross_cluster_pairs, dim=1).values
+        # point_pair_features = self.feature_tensor[mins, maxes,:]
+        # return point_pair_features
 
 
         
 
 
     def train_epoch(self):
-        self.reset()
+        # self.reset()
         self.model.optimizer.zero_grad()
         done = False
         epoch_loss = 0
         iterations = 0
+        print('getting epoch_loss')
         while not done:
             loss, done = self.train_iter()
             if (loss is None) or done : break
             epoch_loss = epoch_loss + loss 
             iterations += 1
         
+        print("we've got to go back!")
         epoch_loss.backward(retain_graph=True, create_graph=True)
         self.model.optimizer.step()
+        self.model.optimizer.zero_grad()
         out = float(epoch_loss) / iterations
         print('epoch_loss:', out)
         return out

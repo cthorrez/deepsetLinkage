@@ -6,25 +6,25 @@ class DeepSetLinkage():
         super(DeepSetLinkage, self).__init__()
         
         self.in_dim = in_dim
-        self.feature_fn = nn.Sequential(
-                                nn.Linear(in_dim, in_dim),
-                                nn.ReLU(),
-                                nn.Linear(in_dim, in_dim)
-                            )
-
-        self.scoring_fn = nn.Sequential(
-                             nn.Linear(in_dim, in_dim),
-                             nn.ReLU(),
-                             nn.Linear(in_dim, 1),
-                            )
-
         # self.feature_fn = nn.Sequential(
+        #                         nn.Linear(in_dim, in_dim),
+        #                         nn.ReLU(),
         #                         nn.Linear(in_dim, in_dim)
         #                     )
 
         # self.scoring_fn = nn.Sequential(
-        #                      nn.Linear(in_dim, 1)
+        #                      nn.Linear(in_dim, in_dim),
+        #                      nn.ReLU(),
+        #                      nn.Linear(in_dim, 1),
         #                     )
+
+        self.feature_fn = nn.Sequential(
+                                nn.Linear(in_dim, in_dim)
+                            )
+
+        self.scoring_fn = nn.Sequential(
+                             nn.Linear(in_dim, 1)
+                            )
 
         params = list(self.feature_fn.parameters()) + list(self.scoring_fn.parameters()) 
         params = nn.ParameterList(params)
@@ -40,3 +40,8 @@ class DeepSetLinkage():
     def forward(self, pairs):
         score = self.score(self.featurize(pairs))
         return score
+
+    def to(self, device):
+        self.feature_fn = self.feature_fn.to(device)
+        self.scoring_fn = self.scoring_fn.to(device)
+        return self
