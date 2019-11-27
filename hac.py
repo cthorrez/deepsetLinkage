@@ -112,7 +112,7 @@ class HAC():
     # returns loss and bool which tells if there are still pure cluster mergers left
     def get_loss(self):
         cluster_pairs = list(itertools.combinations(self.active_clusters, 2))
-        cluster_pair_linkages = torch.FloatTensor(np.zeros(len(cluster_pairs)))
+        cluster_pair_linkages = torch.FloatTensor(np.zeros(len(cluster_pairs))).to(self.device)
         pure_mask = torch.zeros(len(cluster_pairs), dtype=torch.bool)
 
         min_pure_linkage = np.inf
