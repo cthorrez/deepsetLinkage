@@ -9,6 +9,7 @@ import json
 
 
 def train(args):
+    torch.autograd.set_detect_anomaly(True)
     blocks = ['allen_d', 'moore_a', 'lee_l', 'robinson_h',
               'mcguire_j', 'blum_a', 'jones_s', 'young_s' ]
 
@@ -29,9 +30,9 @@ def train(args):
     model = DeepSetLinkage(in_dim=feature_dim)
     hacs = {}
     # train_blocks = ['lee_l']
-    train_blocks = ['moore_a']
+    # train_blocks = ['moore_a']
     # train_blocks = ['jones_s']
-    # train_blocks = ['allen_d'] # smallest
+    train_blocks = ['allen_d'] # smallest
 
     for epoch in range(num_epochs):
         print('epoch:', epoch)
