@@ -24,7 +24,7 @@ def train(args):
     test_blocks = blocks[5:8]
 
 
-    num_epochs = 50
+    num_epochs = 10
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)
@@ -52,7 +52,7 @@ def train(args):
 
             # if idx == 2:
             #     break
-    torch.save(model, 'model')
+    torch.save(model, 'model_big')
 
         
 
