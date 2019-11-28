@@ -73,13 +73,13 @@ class HAC():
             self.pure_mask[x,y] = self.check_cluster_pair_pure(self.cluster_idxs[x], self.cluster_idxs[y])
 
         # set all linkages to infinite for old cluster j
-        # for cid in self.active_clusters:
+        for cid in self.active_clusters:
             x,y = min(j,cid), max(j,cid)
             self.linkage_matrix[x,y] = np.inf
             self.pure_mask[x,y] = 0
 
-        self.linkage_matrix[min(i,j), max(i,j)] = np.inf
-        self.pure_mask[min(i,j), max(i,j)] = 0
+        # self.linkage_matrix[min(i,j), max(i,j)] = np.inf
+        # self.pure_mask[min(i,j), max(i,j)] = 0
 
 
 
