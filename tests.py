@@ -24,7 +24,7 @@ def train(args):
     test_blocks = blocks[5:8]
 
 
-    num_epochs = 2
+    num_epochs = 50
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)

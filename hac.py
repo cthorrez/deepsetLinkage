@@ -216,14 +216,14 @@ class HAC():
         done = False
         epoch_loss = 0
         iterations = 0
-        print('getting epoch_loss')
+        # print('getting epoch_loss')
         while not done:
             loss, done = self.train_iter()
             if (loss is None) or done : break
             epoch_loss = epoch_loss + loss 
             iterations += 1
         
-        print("we've got to go back!")
+        # print("we've got to go back!")
         epoch_loss.backward(retain_graph=True, create_graph=True)
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
