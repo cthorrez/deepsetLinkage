@@ -24,7 +24,7 @@ def train(args):
     test_blocks = blocks[5:8]
 
 
-    num_epochs = 3
+    num_epochs = 2
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)
@@ -32,7 +32,7 @@ def train(args):
     # train_blocks = ['lee_l']
     # train_blocks = ['moore_a']
     # train_blocks = ['jones_s']
-    train_blocks = ['allen_d'] # smallest
+    # train_blocks = ['allen_d'] # smallest
 
     for epoch in range(num_epochs):
         print('epoch:', epoch)
@@ -52,6 +52,7 @@ def train(args):
 
             # if idx == 2:
             #     break
+    torch.save(model, 'model')
 
         
 
