@@ -158,7 +158,7 @@ class HAC():
         
 
         min_pure_idx = torch.argmin(self.linkage_matrix + 1000*impure_or_inactive.type(torch.float))
-        min_pure_cluster_pair = np.unravel_index(min_pure_idx, (self.n_points, self.n_points))
+        min_pure_cluster_pair = np.unravel_index(min_pure_idx.detach().cpu().numpy(), (self.n_points, self.n_points))
         min_pure_linkage = self.linkage_matrix[min_pure_cluster_pair[0], min_pure_cluster_pair[1]]
         dirty_cluster_linkages = self.linkage_matrix[impure_and_active]
 
