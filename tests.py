@@ -24,7 +24,7 @@ def train(args):
     test_blocks = blocks[5:8]
 
 
-    num_epochs = 10
+    num_epochs = 15
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)
@@ -34,12 +34,14 @@ def train(args):
     # train_blocks = ['jones_s']
     # train_blocks = ['allen_d'] # smallest
 
+    # val_blocks = ['allen_d'] # smallest
+
     for epoch in range(num_epochs):
         print('epoch:', epoch)
                 
         for idx, tb in enumerate(train_blocks):
 
-            print('block:', tb)
+            print('train on', tb)
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(tb), delimiter=',', dtype=np.float)
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
@@ -50,8 +52,24 @@ def train(args):
             del hac 
             gc.collect()
 
-            # if idx == 2:
-            #     break
+
+        for idx, vb in enumerate(val_blocks):
+            print('validating on', vb)
+            pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
+            pairs = process_pair_features(pair_features)
+            gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+
+            loss = hac.validate()
+            print('val loss:', loss)
+
+        # find f1 score
+        hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+        links, f1s = hac.cluster()
+        print('links:', links)
+        print('f1s:', f1s)
+
+
     torch.save(model, 'model_big')
 
         

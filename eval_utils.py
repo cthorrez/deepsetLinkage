@@ -28,3 +28,7 @@ def pairwise_f1(y_true, y_pred):  # TODO Optimize this, we do not need to calcul
 	f1 			= 2 * precision * recall / (precision + recall) if precision + recall > 0. else 0.
 	
 	return f1
+
+
+def pick_threshold(thresh2f1s):
+	pass

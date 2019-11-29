@@ -15,7 +15,8 @@ class HAC():
             if torch.cuda.is_available():
                 self.device = torch.device('cuda:0')
             else:
-                print('use_gpu is True but GPU is not available, using CPU')
+                pass
+                # print('use_gpu is True but GPU is not available, using CPU')
 
         self.pairs = pairs
         self.pair_dim = pairs[list(self.pairs.keys())[0]].shape[0]
@@ -83,7 +84,7 @@ class HAC():
 
 
 
-    def train_iter(self):
+    def train_iter(self, return_thresh=False):
         # find clusters to merge
         # linkage_matrix = torch.triu(self.linkage_matrix)
         # linkage_matrix[linkage_matrix==0] = np.inf
@@ -94,13 +95,7 @@ class HAC():
         i,j = min_pure_cluster_pair
         # i,j = dict_argmin(self.linkage_matrix)
 
-        if done:
-            return loss, done
-
-        # commented out because it's expensive and monotonically increasing
-        # f1 = pairwise_f1(self.gt_clusters, self.flat_clusters)
-        # print('merging', i, 'and', j, 'f1:', f1)
-        # print('merging', i, 'and', j)
+        if done: return loss, done
 
 
         # put things from j into i
@@ -114,8 +109,9 @@ class HAC():
         #upate the linkage matrix with values for new cluster
         self.update_linkage_matrix(i,j)
 
-        
+    
         return loss, done
+
 
 
     # returns loss and bool which tells if there are still pure cluster mergers left
@@ -219,7 +215,8 @@ class HAC():
         # print('getting epoch_loss')
         while not done:
             loss, done = self.train_iter()
-            if (loss is None) or done : break
+            # if (loss is None) or done : break
+            if loss is None: break
             epoch_loss = epoch_loss + loss 
             iterations += 1
         
@@ -227,7 +224,7 @@ class HAC():
         epoch_loss.backward(retain_graph=True, create_graph=True)
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
-        out = float(epoch_loss) / iterations
+        out = float(epoch_loss) # / iterations
         print('epoch_loss:', out)
         return out
 
@@ -251,9 +248,62 @@ class HAC():
     def reset(self):
         self.cluster_idxs = {i:[i] for i in range(self.n_points)}
         self.active_clusters = [i for i in range(self.n_points)]
-        self.flat_clusters = self.get_flat_clusters()
+        # self.flat_clusters = self.get_flat_clusters()
         # print('resetting initial linkage_matrix')
-        self.linkage_matrix = self.get_linkage_matrix()
+        self.set_feature_tensor()
+        self.set_linkage_matrix()
+
+
+
+    def validate(self):
+        if len(self.active_clusters) != self.n_points:
+            self.reset()
+        with torch.no_grad():
+            done = False
+            loss = 0
+            iters = 0
+            while not done:
+                level_loss, done = self.train_iter()
+                if level_loss is None : break
+                loss += float(level_loss.detach().cpu())
+                iters += 1
+        return loss # / iters
+
+
+    # cluster using the given linkage function but don't train
+    # does not force it to do pure clusterings
+    # returns [merge_linkages], [f1scores]
+    def cluster(self):
+        with torch.no_grad():
+            linkages = []
+            f1s = []
+
+            while len(self.active_clusters) > 1:
+                merge_idx = int(torch.argmin(self.linkage_matrix).detach().cpu())
+                i,j = np.unravel_index(merge_idx, (self.n_points, self.n_points))
+                i,j = min(i,j), max(i,j)
+
+                linkages.append(float(self.linkage_matrix[i,j].detach().cpu()))
+
+                # put stuff from j into i
+                self.cluster_idxs[i].extend(self.cluster_idxs[j])
+
+                # remove cluster j
+                del self.cluster_idxs[j]
+                self.active_clusters.remove(j)
+                self.flat_clusters = self.get_flat_clusters()
+
+                #upate the linkage matrix with values for new cluster
+                self.update_linkage_matrix(i,j)
+
+                preds = self.get_flat_clusters()
+                f1s.append(pairwise_f1(self.gt_clusters, preds))
+
+        return np.array(linkages), np.array(f1s)
+
+
+
+
 
 
 
