@@ -6,6 +6,7 @@ from utils import process_pair_features, single_linkage, average_linkage, comple
 import gc
 import sys
 import json
+from guppy import hpy
 
 
 def train(args):
@@ -24,7 +25,7 @@ def train(args):
     test_blocks = blocks[5:8]
 
 
-    num_epochs = 15
+    num_epochs = 20
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)
@@ -32,9 +33,13 @@ def train(args):
     # train_blocks = ['lee_l']
     # train_blocks = ['moore_a']
     # train_blocks = ['jones_s']
-    # train_blocks = ['allen_d'] # smallest
+    # train_blocks = ['allen_d'] # small
+    # train_blocks = ['mcguire_j'] # smallest
+    # train_blocks = ['mcguire_j', 'allen_d'] # smallest
 
-    # val_blocks = ['allen_d'] # smallest
+    # val_blocks = ['allen_d'] # small
+    # val_blocks = ['mcguire_j'] # smallest
+    # val_blocks = ['mcguire_j', 'allen_d'] # smallest
 
     for epoch in range(num_epochs):
         print('epoch:', epoch)
@@ -49,9 +54,6 @@ def train(args):
 
             hac.train_epoch()
             
-            del hac 
-            gc.collect()
-
 
         for idx, vb in enumerate(val_blocks):
             print('validating on', vb)
@@ -63,14 +65,26 @@ def train(args):
             loss = hac.validate()
             print('val loss:', loss)
 
-        # find f1 score
+
+
+        
+
+    # find f1 score
+    for idx, vb in enumerate(val_blocks):
+        print('finding f1 on', vb)
+        pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
+        pairs = process_pair_features(pair_features)
+        gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
         hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+
         links, f1s = hac.cluster()
-        print('links:', links)
+    
         print('f1s:', f1s)
 
 
-    torch.save(model, 'model_big')
+
+
+    torch.save(model, 'model_linear')
 
         
 

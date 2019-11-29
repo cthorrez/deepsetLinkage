@@ -4,6 +4,7 @@ from scipy.spatial.distance import pdist, squareform
 import itertools
 from utils import dict_argmin
 from eval_utils import pairwise_f1
+import gc
 
 
 
@@ -221,7 +222,7 @@ class HAC():
             iterations += 1
         
         # print("we've got to go back!")
-        epoch_loss.backward(retain_graph=True, create_graph=True)
+        epoch_loss.backward()
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
         out = float(epoch_loss) # / iterations
@@ -300,6 +301,7 @@ class HAC():
                 f1s.append(pairwise_f1(self.gt_clusters, preds))
 
         return np.array(linkages), np.array(f1s)
+
 
 
 
