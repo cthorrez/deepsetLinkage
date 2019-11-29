@@ -6,7 +6,6 @@ from utils import process_pair_features, single_linkage, average_linkage, comple
 import gc
 import sys
 import json
-from guppy import hpy
 
 
 def train(args):
