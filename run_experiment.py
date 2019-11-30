@@ -83,7 +83,7 @@ def train(args):
 
 
 
-    torch.save(model, 'model_neural')
+    torch.save(model, 'model_linear')
 
         
 
