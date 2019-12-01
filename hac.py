@@ -226,7 +226,7 @@ class HAC():
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
         out = float(epoch_loss) # / iterations
-        print('epoch_loss:', out)
+        # print('epoch_loss:', out)
         return out
 
     def train(self):
@@ -301,7 +301,6 @@ class HAC():
                 f1s.append(pairwise_f1(self.gt_clusters, preds))
 
         return np.array(linkages), np.array(f1s)
-
 
 
 

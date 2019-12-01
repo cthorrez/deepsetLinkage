@@ -18,8 +18,8 @@ def train(args):
     seed = 0
     np.random.seed(seed)
     torch.manual_seed(seed)
-    np.random.permutation(len(blocks))
-    train_blocks = blocks[0:3]
+    idxs = np.random.permutation(len(blocks))
+    train_blocks = blocks[idxs[0:3]]
     val_blocks = blocks[3:5]
     test_blocks = blocks[5:8]
 
@@ -83,7 +83,7 @@ def train(args):
 
 
 
-    torch.save(model, 'model_linear')
+    torch.save(model, 'model')
 
         
 
