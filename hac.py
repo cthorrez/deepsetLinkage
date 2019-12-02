@@ -192,7 +192,7 @@ class HAC():
         dirty_loss = dirty_diffs[dirty_diffs>0].sum()
         
         min_pure_diff = torch.clamp(min_pure_linkage + self.margin,0)
-        print(min_pure_diff)
+        # print(min_pure_diff)
         
 
         n_impure = len(dirty_cluster_linkages)
