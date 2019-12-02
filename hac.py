@@ -195,7 +195,9 @@ class HAC():
         
 
         n_impure = len(dirty_cluster_linkages)
-        loss = (dirty_loss + min_pure_diff)/(n_impure + 1)
+        # loss = (dirty_loss + min_pure_diff)/(n_impure + 1)
+        loss = (dirty_loss/n_impure) + min_pure_diff
+
 
         return loss, self.pure_mask.sum()==0, min_pure_cluster_pair
 
