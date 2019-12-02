@@ -2,10 +2,11 @@ import numpy as np
 import torch
 from hac import HAC
 from models import DeepSetLinkage
-from utils import process_pair_features, single_linkage, average_linkage, complete_linkage, l2norm
+from utils import process_pair_features, process_pair_features2
 import gc
 import sys
 import json
+import time
 
 
 def train(args):
@@ -25,7 +26,7 @@ def train(args):
 
 
 
-    num_epochs = 25
+    num_epochs = 15
     feature_dim = 14
     margin = 2.0
     model = DeepSetLinkage(in_dim=feature_dim)
@@ -35,9 +36,9 @@ def train(args):
     # train_blocks = ['jones_s']
     # train_blocks = ['allen_d'] # small
     # train_blocks = ['mcguire_j'] # smallest
-    # train_blocks = ['mcguire_j', 'allen_d'] # smallest
+    # train_blocks = ['mcguire_j', 'allen_d', 'robinson_h', 'moore_a'] # smallest
 
-    # val_blocks = ['allen_d'] # small
+    # val_blocks = ['lee_l'] # small
     # val_blocks = ['mcguire_j'] # smallest
     # val_blocks = ['mcguire_j', 'allen_d'] # smallest
 
@@ -45,10 +46,24 @@ def train(args):
                         
         train_loss = 0
         for idx, tb in enumerate(train_blocks):
-            print(tb)
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(tb), delimiter=',', dtype=np.float)
-            pairs = process_pair_features(pair_features)
+            # print(tb)
+            # start = time.time()
+            # pairs = process_pair_features(pair_features)
+            # print('og time:', time.time() - start)
+
+            # start = time.time()
+            pairs = process_pair_features2(pair_features)
+            # print('new time:', time.time() - start)
+
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
+
+
+            # n_points = len(gt_clusters)
+            # for i in range(n_points):
+            #     for j in range(i+1, n_points):
+            #         assert((pairs[(i,j)] - pairs2[i,j,:]).sum() == 0)
+
             hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
 
             loss = hac.train_epoch()
@@ -60,7 +75,7 @@ def train(args):
         val_loss = 0
         for idx, vb in enumerate(val_blocks):
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
-            pairs = process_pair_features(pair_features)
+            pairs = process_pair_features2(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
             hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
             
@@ -77,7 +92,7 @@ def train(args):
     for idx, vb in enumerate(val_blocks):
         print('finding f1 on', vb)
         pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
-        pairs = process_pair_features(pair_features)
+        pairs = process_pair_features2(pair_features)
         gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
         hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
 

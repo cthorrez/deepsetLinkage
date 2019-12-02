@@ -34,8 +34,15 @@ class DeepSetLinkage():
         return self.feature_fn(pairs)
 
     def score(self, pairs):
+        # input is (n,d), output is (1,1)
         mu = torch.mean(pairs, dim=0, keepdim=True)
         return self.scoring_fn(mu)
+
+    def score_batch(self, pairs):
+        # input is (bs, n, d), output is (bs, 1)
+        mu = torch.mean(pairs, dim=1, keepdim=False)
+        return self.scoring_fn(mu)
+
 
     def forward(self, pairs):
         score = self.score(self.featurize(pairs))

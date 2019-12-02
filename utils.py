@@ -42,6 +42,19 @@ def process_pair_features(pair_features):
     return pairs
 
 
+def process_pair_features2(pair_features):
+    n_points = np.max(pair_features[:,1]).astype(np.int) + 1
+    pair_dim = pair_features.shape[1] - 3
+    pair_tensor = torch.FloatTensor(np.zeros((n_points, n_points, pair_dim)))
+    cumsum = 0
+    for i in range(n_points):
+        idxs = np.arange(i+1, n_points)
+        pair_tensor[i,idxs,:] = torch.FloatTensor(pair_features[cumsum:cumsum+n_points-i-1,2:-1])
+        cumsum += (n_points - i -1)
+
+    return pair_tensor
+
+
 
 
 # class lt_matrix():

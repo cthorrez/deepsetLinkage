@@ -5,6 +5,7 @@ import itertools
 from utils import dict_argmin
 from eval_utils import pairwise_f1
 import gc
+from copy import deepcopy
 
 
 
@@ -20,7 +21,8 @@ class HAC():
                 # print('use_gpu is True but GPU is not available, using CPU')
 
         self.pairs = pairs
-        self.pair_dim = pairs[list(self.pairs.keys())[0]].shape[0]
+        # self.pair_dim = pairs[list(self.pairs.keys())[0]].shape[0]
+        self.pair_dim = pairs.shape[2]
         self.n_points = len(gt_clusters)
 
         self.gt_clusters = gt_clusters
@@ -42,56 +44,82 @@ class HAC():
         # feature_tensor = {}
         feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.pair_dim))).to(self.device)
 
+        for i in range(self.n_points):
+            idxs = np.arange(i+1,self.n_points)
+            curr_pairs = self.pairs[i,idxs,:].to(self.device)
+            feature_tensor[i,idxs,:] = self.model.featurize(curr_pairs)
 
-        for j in range(self.n_points):
-            for i in range(j):
-                # i < j
-                # feature_tensor[i,j] = self.model.featurize(self.pairs[(i,j)].to(self.device)) # dictionary version
-                feature_tensor[i,j,:] = self.model.featurize(self.pairs[(i,j)].to(self.device)) # tensor version 
-        
         self.feature_tensor = feature_tensor
 
     def set_linkage_matrix(self):
         linkage_matrix = torch.FloatTensor(np.zeros((self.n_points, self.n_points)) + np.inf).to(self.device)
         # linkage_matrix = {}
-        pure_mask = torch.BoolTensor(np.zeros((self.n_points, self.n_points))).to(self.device)
 
-        for j in range(self.n_points):
-            for i in range(j):
-                # i < j
-                linkage_matrix[i,j] = self.model.score(self.feature_tensor[i,j].unsqueeze(0)).squeeze()
-                pure_mask[i,j] = self.check_cluster_pair_pure(self.cluster_idxs[i], self.cluster_idxs[j])
+
+        gt_matrix = torch.LongTensor(self.gt_clusters).repeat(self.n_points,1)
+        pure_mask = gt_matrix.t() == gt_matrix
+        triu_mask = ~torch.tril(torch.ones(self.n_points, self.n_points, dtype=torch.bool))
+        pure_mask = pure_mask & triu_mask
+
+        for i in range(self.n_points-1):
+            idxs = np.arange(i+1,self.n_points)
+            linkage_matrix[i,idxs] = self.model.score_batch(self.feature_tensor[i,idxs,:].unsqueeze(1)).squeeze()
+
+        # for j in range(self.n_points):
+        #     for i in range(j):
+        #         # i < j
+        #         linkage_matrix[i,j] = self.model.score(self.feature_tensor[i,j].unsqueeze(0)).squeeze()
+        #         # print('og:', linkage_matrix[i,j])
+        #         # print('new:', linkage_matrix2[i,j])
+        #         assert(torch.abs(linkage_matrix[i,j] - linkage_matrix2[i,j]) < 1e-7)
 
         self.linkage_matrix = linkage_matrix
         self.pure_mask = pure_mask
 
     def update_linkage_matrix(self, i, j):
         # recompute linkages for new cluster i
-        for cid in self.active_clusters:
-            if cid == i : continue # don't compute linkage with self
-            x,y = min(i,cid), max(i,cid)
+        # for cid in self.active_clusters:
+        #     if cid == i : continue # don't compute linkage with self
+        #     x,y = min(i,cid), max(i,cid)
+        #     pair_features = self.get_pair_features_for_cluster_pair(x,y)
+        #     self.linkage_matrix[x,y] = self.model.score(pair_features).squeeze()
+        #     self.pure_mask[x,y] = self.check_cluster_pair_pure(self.cluster_idxs[x], self.cluster_idxs[y])
+
+        #     # set all linkages to infinite for old cluster j
+        #     # for cid in self.active_clusters:
+        #     x,y = min(j,cid), max(j,cid)
+        #     self.linkage_matrix[x,y] = np.inf
+        #     self.pure_mask[x,y] = 0
+
+        # self.linkage_matrix[min(i,j), max(i,j)] = np.inf
+        # self.pure_mask[min(i,j), max(i,j)] = 0
+
+
+
+        feature_list = []
+        idxs = np.array([x for x in self.active_clusters if x != i])
+        min_idxs = np.minimum(idxs,i)
+        max_idxs = np.maximum(idxs,i)
+
+        for x,y in zip(min_idxs, max_idxs):
             pair_features = self.get_pair_features_for_cluster_pair(x,y)
-            self.linkage_matrix[x,y] = self.model.score(pair_features).squeeze()
+            # print(pair_features.shape)
+            # print(pair_features)
+            feature_list.append(pair_features.mean(dim=0))
             self.pure_mask[x,y] = self.check_cluster_pair_pure(self.cluster_idxs[x], self.cluster_idxs[y])
 
-        # set all linkages to infinite for old cluster j
-        # for cid in self.active_clusters:
-            x,y = min(j,cid), max(j,cid)
-            self.linkage_matrix[x,y] = np.inf
-            self.pure_mask[x,y] = 0
+        features = torch.stack(feature_list)
+        scores = self.model.scoring_fn(features).squeeze()        
+        self.linkage_matrix[min_idxs, max_idxs] = scores
 
-        self.linkage_matrix[min(i,j), max(i,j)] = np.inf
-        self.pure_mask[min(i,j), max(i,j)] = 0
-
+        self.linkage_matrix[j,:] = np.inf
+        self.linkage_matrix[:,j] = np.inf
+        self.pure_mask[j,:] = 0
+        self.pure_mask[:,j] = 0
 
 
     def train_iter(self, return_thresh=False):
         # find clusters to merge
-        # linkage_matrix = torch.triu(self.linkage_matrix)
-        # linkage_matrix[linkage_matrix==0] = np.inf
-        # i,j = np.unravel_index(torch.argmin(linkage_matrix), shape=self.linkage_matrix.shape)
-        
-
         loss, done, min_pure_cluster_pair = self.get_loss()
         i,j = min_pure_cluster_pair
         # i,j = dict_argmin(self.linkage_matrix)
@@ -216,6 +244,7 @@ class HAC():
         # print('getting epoch_loss')
         while not done:
             loss, done = self.train_iter()
+            # print(len(self.active_clusters))
             # if (loss is None) or done : break
             if loss is None: break
             epoch_loss = epoch_loss + loss 
@@ -279,7 +308,7 @@ class HAC():
             linkages = []
             f1s = []
 
-            while len(self.active_clusters) > 1:
+            while len(self.active_clusters) > 2:
                 merge_idx = int(torch.argmin(self.linkage_matrix).detach().cpu())
                 i,j = np.unravel_index(merge_idx, (self.n_points, self.n_points))
                 i,j = min(i,j), max(i,j)
