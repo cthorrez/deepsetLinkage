@@ -56,9 +56,9 @@ class HAC():
         # linkage_matrix = {}
 
 
-        gt_matrix = torch.LongTensor(self.gt_clusters).repeat(self.n_points,1)
+        gt_matrix = torch.LongTensor(self.gt_clusters).repeat(self.n_points,1).to(self.device)
         pure_mask = gt_matrix.t() == gt_matrix
-        triu_mask = ~torch.tril(torch.ones(self.n_points, self.n_points, dtype=torch.bool))
+        triu_mask = ~torch.tril(torch.ones(self.n_points, self.n_points, dtype=torch.bool).to(self.device))
         pure_mask = pure_mask & triu_mask
 
         for i in range(self.n_points-1):
