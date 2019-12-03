@@ -28,7 +28,7 @@ def train(args):
     num_epochs = args['n_epochs']
     feature_dim = 14
     margin = args['margin']
-    model = DeepSetLinkage(in_dim=feature_dim, args['lr'], args['linear'])
+    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], linear=args['linear'])
 
 
     # train_blocks = ['mcguire_j'] # smallest
