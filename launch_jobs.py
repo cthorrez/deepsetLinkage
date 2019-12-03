@@ -4,7 +4,7 @@ import json
 import time
 
 def main():
-    args = json.load(open(cfg))
+    args = json.load(open('config.json'))
     path = args['path']
     shutil.rmtree(path)
     os.mkdir(path)
