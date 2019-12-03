@@ -2,7 +2,6 @@ import numpy as np
 import torch
 from scipy.spatial.distance import pdist, squareform
 import itertools
-from utils import dict_argmin
 from eval_utils import pairwise_f1
 import gc
 from copy import deepcopy
@@ -122,8 +121,6 @@ class HAC():
         # find clusters to merge
         loss, done, min_pure_cluster_pair = self.get_loss()
         i,j = min_pure_cluster_pair
-        # i,j = dict_argmin(self.linkage_matrix)
-
         if done: return loss, done
 
 
