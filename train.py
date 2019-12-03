@@ -119,6 +119,6 @@ def main(args, seed):
 if __name__ == '__main__':
     cfg = 'config.json'
     args = json.load(open(cfg))
-    seed = sys.argv[1]
+    seed = int(sys.argv[1])
     
     main(args, seed)
