@@ -31,13 +31,12 @@ def train(args, seed=0):
     model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], linear=args['linear'])
 
 
-    # train_blocks = ['mcguire_j'] # smallest
-    # train_blocks = ['mcguire_j', 'allen_d', 'robinson_h'] # small set
-    # val_blocks = ['mcguire_j'] # smallest
-    # val_blocks = ['mcguire_j', 'allen_d'] # smallish set
 
+    train_losses = []
+    val_losses = []
 
     prev_train_loss = np.inf
+    prev_val_loss = np.inf
     prev_model = deepcopy(model)
     for epoch in range(num_epochs):
         
@@ -88,8 +87,17 @@ def train(args, seed=0):
             model = prev_model
             break
 
+        if val_loss > prev_val_loss:
+            print('val loss went up, stopping now')
+            model = prev_model
+            break
+
+        train_losses.append(train_loss)
+        val_losses.append(val_loss)
+
         prev_model = deepcopy(model)
         prev_train_loss = train_loss
+        prev_val_loss = val_loss
 
 
 
@@ -110,6 +118,10 @@ def train(args, seed=0):
         print('linkage for best f1:', links[idx])
         
 
+
+
+    np.save(args['path']+'/train_losses_'+str(seed), np.array(train_losses))
+    np.save(args['path']+'/train_losses_'+str(seed), np.array(train_losses))
 
 
     torch.save(model, args['path']+'/model')
