@@ -113,16 +113,8 @@ def train(args, seed=0):
     torch.save(model, args['path']+'/model')
 
         
-
-
-
-
-
-def main(args):
-    train(args)
-
-
-
+def main(args, seed):
+    train(args, seed)
 
 if __name__ == '__main__':
     cfg = 'config.json'
