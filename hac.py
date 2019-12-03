@@ -304,7 +304,7 @@ class HAC():
                 if level_loss is None : break
                 loss += float(level_loss.detach().cpu())
                 iters += 1
-        return loss # / iters
+        return loss / iters
 
 
     # cluster using the given linkage function but don't train
