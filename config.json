@@ -4,7 +4,7 @@
     "n_epochs" : 50,
 
     "margin" : 2.0,
-    "lr" : 0.001,
+    "lr" : 0.005,
     "linear" : false,
     "use_gpu" : true
 }

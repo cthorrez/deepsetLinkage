@@ -121,7 +121,7 @@ def train(args, seed=0):
 
 
     np.save(args['path']+'/train_losses_'+str(seed), np.array(train_losses))
-    np.save(args['path']+'/train_losses_'+str(seed), np.array(train_losses))
+    np.save(args['path']+'/val_losses_'+str(seed), np.array(val_losses))
 
 
     torch.save(model, args['path']+'/model')

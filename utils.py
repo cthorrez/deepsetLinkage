@@ -1,32 +1,12 @@
 import numpy as np 
 import torch
-from scipy.spatial.distance import cdist
 
 
-def dict_argmin(d):
-    argmin = None
-    cur_min = np.inf
-    for k,v in d.items():
-        if v < cur_min:
-            cur_min = v
-            argmin = k
-    return argmin
+# take in a list of arrays not necessarily of equal length
+# takes the mean o them where shorter ones are padded with their last value
+def unequal_mean(arrays):
+    maxlen = np.max([len(a) for a in arrays])
 
-
-def l2norm(x):
-    return -x.dot(x)
-
-def single_linkage(pairs, dist_fn):
-    dists = np.array([dist_fn(p) for p in pairs])
-    return np.min(dists)
-
-def average_linkage(pairs, dist_fn):
-    dists = np.array([dist_fn(p) for p in pairs])
-    return np.mean(dists)
-
-def complete_linkage(pairs, dist_fn):
-    dists = np.array([dist_fn(p) for p in pairs])
-    return np.max(dists)
 
 
 
