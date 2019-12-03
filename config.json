@@ -1,3 +1,10 @@
 {
+    "path" : "results",
+    "n_trials" : 4,
+    "n_epochs" : 15,
+
+    "margin" : 2.0,
+    "lr" : 0.01,
+    "linear" : false,
     "use_gpu" : true
 }

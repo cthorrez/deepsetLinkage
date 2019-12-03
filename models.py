@@ -2,33 +2,32 @@ import torch
 import torch.nn as nn
 
 class DeepSetLinkage():
-    def __init__(self, in_dim):
+    def __init__(self, in_dim, lr=1e-2, linear=False):
         super(DeepSetLinkage, self).__init__()
         
         self.in_dim = in_dim
-        self.feature_fn = nn.Sequential(
-                                nn.Linear(in_dim, in_dim),
-                                nn.ReLU(),
-                                nn.Linear(in_dim, in_dim)
-                            )
 
-        self.scoring_fn = nn.Sequential(
-                             nn.Linear(in_dim, in_dim),
-                             nn.ReLU(),
-                             nn.Linear(in_dim, 1),
-                            )
+        if linear:
+            self.feature_fn = nn.Linear(in_dim, in_dim)
+            self.scoring_fn = nn.Linear(in_dim, 1)
 
-        # self.feature_fn = nn.Sequential(
-        #                         nn.Linear(in_dim, in_dim)
-        #                     )
+        else:       
+            self.feature_fn = nn.Sequential(
+                                    nn.Linear(in_dim, in_dim),
+                                    nn.ReLU(),
+                                    nn.Linear(in_dim, in_dim)
+                                )
 
-        # self.scoring_fn = nn.Sequential(
-        #                      nn.Linear(in_dim, 1)
-        #                     )
+            self.scoring_fn = nn.Sequential(
+                                 nn.Linear(in_dim, in_dim),
+                                 nn.ReLU(),
+                                 nn.Linear(in_dim, 1),
+                                )
+
 
         params = list(self.feature_fn.parameters()) + list(self.scoring_fn.parameters()) 
         params = nn.ParameterList(params)
-        self.optimizer = torch.optim.Adam(params, lr=1e-2)
+        self.optimizer = torch.optim.Adam(params, lr=lr)
     
     def featurize(self, pairs):
         return self.feature_fn(pairs)
