@@ -9,13 +9,13 @@ import time
 from copy import deepcopy
 
 
-def train(args):
+def train(args, seed=0):
     blocks = np.array(['allen_d', 'moore_a', 'lee_l', 'robinson_h',
               'mcguire_j', 'blum_a', 'jones_s', 'young_s' ])
 
     use_gpu = args['use_gpu']
 
-    seed = 0
+    print('seed:', seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     idxs = np.random.permutation(len(blocks))
@@ -126,9 +126,7 @@ def main(args):
 
 if __name__ == '__main__':
     cfg = 'config.json'
-    if len(sys.argv) > 1:
-        cfg = sys.argv[1]
-
     args = json.load(open(cfg))
+    seed = sys.argv[1]
     
-    main(args)
+    main(args, seed)

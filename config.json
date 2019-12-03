@@ -1,7 +1,7 @@
 {
     "path" : "results",
     "n_trials" : 4,
-    "n_epochs" : 15,
+    "n_epochs" : 1,
 
     "margin" : 2.0,
     "lr" : 0.01,
