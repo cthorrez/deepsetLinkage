@@ -15,7 +15,7 @@ def train(args, seed=0):
 
     use_gpu = args['use_gpu']
 
-    print('seed:', seed)
+
     np.random.seed(seed)
     torch.manual_seed(seed)
     idxs = np.random.permutation(len(blocks))
@@ -65,7 +65,7 @@ def train(args, seed=0):
             hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
 
             loss = hac.train_epoch()
-            print(tb, 'train loss:', loss)
+            #print(tb, 'train loss:', loss)
             train_loss += loss
         print('epoch:', epoch, 'train loss:', train_loss/len(train_blocks))
 
@@ -78,7 +78,7 @@ def train(args, seed=0):
             hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
             
             loss = hac.validate()
-            print(vb, 'val loss:', loss)
+            #print(vb, 'val loss:', loss)
             val_loss += loss
         print('epoch:', epoch, 'val loss:', val_loss/len(val_blocks))
 
@@ -105,8 +105,10 @@ def train(args, seed=0):
 
         links, f1s = hac.cluster()
     
-        print('links:', links)
-        print('f1s:', f1s)
+        idx = np.argmax(f1s)
+        print('best f1:', f1s[idx])
+        print('linkage for best f1:', links[idx])
+        
 
 
 

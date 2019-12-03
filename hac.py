@@ -254,10 +254,14 @@ class HAC():
             iterations += 1
         
         # print("we've got to go back!")
+
+        # this line might be optional idk yet
+        epoch_loss = epoch_loss / iterations
+
         epoch_loss.backward()
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
-        out = float(epoch_loss) # / iterations
+        out = float(epoch_loss) 
         # print('epoch_loss:', out)
         return out
 
