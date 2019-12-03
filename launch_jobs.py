@@ -6,7 +6,8 @@ import time
 def main():
     args = json.load(open('config.json'))
     path = args['path']
-    shutil.rmtree(path)
+    if os.path.exists(path):
+        shutil.rmtree(path)
     os.mkdir(path)
 
     
