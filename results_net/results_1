@@ -1,0 +1,49 @@
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+epoch: 0 train loss: 3.970313628514608
+epoch: 0 val loss: 3.9501856027485487
+epoch: 1 train loss: 3.9183918635050454
+epoch: 1 val loss: 3.893003029826744
+epoch: 2 train loss: 3.836568752924601
+epoch: 2 val loss: 3.799095875386036
+epoch: 3 train loss: 3.708444039026896
+epoch: 3 val loss: 3.6503470223531407
+epoch: 4 train loss: 3.5157107512156167
+epoch: 4 val loss: 3.432624493842517
+epoch: 5 train loss: 3.231159210205078
+epoch: 5 val loss: 3.133931466640332
+epoch: 6 train loss: 2.8392881552378335
+epoch: 6 val loss: 2.741337418384194
+epoch: 7 train loss: 2.317593495051066
+epoch: 7 val loss: 2.266928928841072
+epoch: 8 train loss: 1.7967008749643962
+epoch: 8 val loss: 1.930741679896352
+epoch: 9 train loss: 1.3717436790466309
+epoch: 9 val loss: 1.6607325581825656
+epoch: 10 train loss: 1.034692684809367
+epoch: 10 val loss: 1.4844430647360385
+epoch: 11 train loss: 0.8530290921529134
+epoch: 11 val loss: 1.4131564570168869
+epoch: 12 train loss: 0.7680917779604594
+epoch: 12 val loss: 1.320498128939006
+epoch: 13 train loss: 0.7290571331977844
+epoch: 13 val loss: 1.1811292348644584
+epoch: 14 train loss: 0.7205871740976969
+epoch: 14 val loss: 1.066439261068664
+epoch: 15 train loss: 0.7390896677970886
+epoch: 15 val loss: 1.0718807224668079
+train loss went up, stopping now
+finding f1 on jones_s
+best f1: 0.8582866551518183
+linkage for best f1: 2.266308307647705
+finding f1 on allen_d
+best f1: 0.4473684210526315
+linkage for best f1: -3.647545576095581
+
+real	23m0.999s
+user	24m52.539s
+sys	0m28.772s

@@ -1,0 +1,59 @@
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
+  "type " + obj.__name__ + ". It won't be checked "
+epoch: 0 train loss: 3.984005610148112
+epoch: 0 val loss: 3.932459686476067
+epoch: 1 train loss: 3.9219579696655273
+epoch: 1 val loss: 3.8739998168663403
+epoch: 2 train loss: 3.857565482457479
+epoch: 2 val loss: 3.796190175408773
+epoch: 3 train loss: 3.7691879272460938
+epoch: 3 val loss: 3.686325064937203
+epoch: 4 train loss: 3.6425983905792236
+epoch: 4 val loss: 3.5280581047084456
+epoch: 5 train loss: 3.4670045375823975
+epoch: 5 val loss: 3.308008427058241
+epoch: 6 train loss: 3.229241371154785
+epoch: 6 val loss: 3.017880789435342
+epoch: 7 train loss: 2.9064700603485107
+epoch: 7 val loss: 2.6220411604543705
+epoch: 8 train loss: 2.470372041066488
+epoch: 8 val loss: 2.0965135602664535
+epoch: 9 train loss: 1.8924541473388672
+epoch: 9 val loss: 1.4750738405023243
+epoch: 10 train loss: 1.392327904701233
+epoch: 10 val loss: 1.239811023607611
+epoch: 11 train loss: 1.19788791735967
+epoch: 11 val loss: 1.1633769321989709
+epoch: 12 train loss: 1.126345455646515
+epoch: 12 val loss: 1.090256136955513
+epoch: 13 train loss: 1.0250539382298787
+epoch: 13 val loss: 0.9605078170329456
+epoch: 14 train loss: 0.8549530108769735
+epoch: 14 val loss: 0.8174782098003675
+epoch: 15 train loss: 0.6555569966634115
+epoch: 15 val loss: 0.7036464931260722
+epoch: 16 train loss: 0.6120851238568624
+epoch: 16 val loss: 0.6857103395795386
+epoch: 17 train loss: 0.5935391585032145
+epoch: 17 val loss: 0.6721077564897916
+epoch: 18 train loss: 0.5470945338408152
+epoch: 18 val loss: 0.6569708878029441
+epoch: 19 train loss: 0.5266381800174713
+epoch: 19 val loss: 0.6491936085667114
+epoch: 20 train loss: 0.496339350938797
+epoch: 20 val loss: 0.6513535175051937
+val loss went up, stopping now
+finding f1 on jones_s
+best f1: 0.8709120020291371
+linkage for best f1: 1.1844600439071655
+finding f1 on robinson_h
+best f1: 0.8737864077669902
+linkage for best f1: -1.9515466690063477
+
+real	24m36.983s
+user	26m14.900s
+sys	0m28.558s
