@@ -13,7 +13,7 @@ def main(path):
     val_means = unequal_mean(val_arrays)
 
     x = np.arange(len(train_means))
-    plt.plot(x, train_means, color='blue', lablel='train')
+    plt.plot(x, train_means, color='blue', label='train')
     plt.plot(x, val_means, color='red', label='val')
     plt.xlabel('epoch')
     plt.ylabel('loss')
