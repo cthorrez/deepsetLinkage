@@ -1,5 +1,5 @@
 {
-    "path" : "results_linear",
+    "path" : "results_linear_plustrain",
     "n_trials" : 8,
     "n_epochs" : 100,
     "patience" : 3,

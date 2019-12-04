@@ -1,9 +1,3 @@
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
 epoch: 0 train loss: 3.970313628514608
 epoch: 0 val loss: 3.9501856027485487
 epoch: 1 train loss: 3.9183918635050454
@@ -37,13 +31,20 @@ epoch: 14 val loss: 1.066439261068664
 epoch: 15 train loss: 0.7390896677970886
 epoch: 15 val loss: 1.0718807224668079
 train loss went up, stopping now
-finding f1 on jones_s
-best f1: 0.8582866551518183
-linkage for best f1: 2.266308307647705
-finding f1 on allen_d
-best f1: 0.4473684210526315
-linkage for best f1: -3.647545576095581
+jones_s best f1: 0.8582866551518183 best link: 2.266308307647705
+allen_d best f1: 0.4473684210526315 best link: -3.647545576095581
+best threshold: 2.2662843802968062
+19 data points
+11 merged performed
+test f1 on mcguire_j: 0.4489795918367347
+31 data points
+23 merged performed
+test f1 on robinson_h: 0.44155844155844154
+201 data points
+194 merged performed
+test f1 on blum_a: 0.6272059629507837
+test f1: 0.5059146654486533
 
-real	23m0.999s
-user	24m52.539s
-sys	0m28.772s
+real	22m57.801s
+user	24m59.784s
+sys	0m24.733s

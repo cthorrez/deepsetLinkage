@@ -1,9 +1,3 @@
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
 epoch: 0 train loss: 3.943302313486735
 epoch: 0 val loss: 3.931731373343274
 epoch: 1 train loss: 3.869150956471761
@@ -40,14 +34,25 @@ epoch: 16 train loss: 0.6596296528975168
 epoch: 16 val loss: 0.8418208712522116
 epoch: 17 train loss: 0.6330064435799917
 epoch: 17 val loss: 0.8493232473008823
-val loss went up, stopping now
-finding f1 on lee_l
-best f1: 0.7116342236306021
-linkage for best f1: -1.1796506643295288
-finding f1 on robinson_h
-best f1: 0.8288288288288288
-linkage for best f1: -1.0062103271484375
+epoch: 18 train loss: 0.621473620335261
+epoch: 18 val loss: 0.8673013506693319
+epoch: 19 train loss: 0.6184709072113037
+epoch: 19 val loss: 0.8626629992310257
+val loss hasn't improved in 3 epochs, stopping now
+lee_l best f1: 0.7116342236306021 best link: -1.1796506643295288
+robinson_h best f1: 0.8288288288288288 best link: -1.0062103271484375
+best threshold: -1.1796485941429538
+222 data points
+184 merged performed
+test f1 on young_s: 0.5924419827525766
+201 data points
+168 merged performed
+test f1 on blum_a: 0.3065326633165829
+72 data points
+39 merged performed
+test f1 on allen_d: 0.3577235772357724
+test f1: 0.41889940776831064
 
-real	29m40.820s
-user	29m40.769s
-sys	1m37.436s
+real	32m44.101s
+user	32m44.330s
+sys	1m50.587s

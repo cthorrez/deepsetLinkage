@@ -1,9 +1,3 @@
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
 epoch: 0 train loss: 3.922192096710205
 epoch: 0 val loss: 3.89577469470525
 epoch: 1 train loss: 3.851257880528768
@@ -40,14 +34,25 @@ epoch: 16 train loss: 0.9820953408877054
 epoch: 16 val loss: 0.7680348220845188
 epoch: 17 train loss: 0.9324888785680135
 epoch: 17 val loss: 0.7680847862822823
-val loss went up, stopping now
-finding f1 on jones_s
-best f1: 0.7169290397939951
-linkage for best f1: 2.7750415802001953
-finding f1 on robinson_h
-best f1: 0.8411214953271027
-linkage for best f1: -1.2730867862701416
+epoch: 18 train loss: 0.908653179804484
+epoch: 18 val loss: 0.7825919372326763
+epoch: 19 train loss: 0.8841147224108378
+epoch: 19 val loss: 0.7955023068071422
+val loss hasn't improved in 3 epochs, stopping now
+jones_s best f1: 0.7169290397939951 best link: 2.7750415802001953
+robinson_h best f1: 0.8411214953271027 best link: -1.2730867862701416
+best threshold: 0.24941964007328554
+227 data points
+203 merged performed
+test f1 on moore_a: 0.6043524794862648
+19 data points
+11 merged performed
+test f1 on mcguire_j: 0.4489795918367347
+222 data points
+191 merged performed
+test f1 on young_s: 0.5942753925246631
+test f1: 0.5492024879492209
 
-real	18m53.786s
-user	20m34.046s
-sys	0m27.328s
+real	22m49.089s
+user	24m41.956s
+sys	0m22.405s

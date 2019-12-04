@@ -53,20 +53,15 @@ epoch: 25 val loss: 1.2983508009840623
 epoch: 26 train loss: 0.5384479761123657
 epoch: 26 val loss: 1.3102633632018852
 val loss hasn't improved in 3 epochs, stopping now
-moore_a best f1: 0.709997179352863 best link: 1.8979591131210327
-allen_d best f1: 0.5151515151515151 best link: -2.214285373687744
-best threshold: -1.83761718804627
-201 data points
-147 merged performed
-test f1 on blum_a: 0.36510386803687206
-471 data points
-369 merged performed
-test f1 on jones_s: 0.46786353783809254
-31 data points
-14 merged performed
-test f1 on robinson_h: 0.6966292134831461
-test f1: 0.5098655397860369
+Traceback (most recent call last):
+  File "train.py", line 151, in <module>
+    main(args, seed)
+  File "train.py", line 144, in main
+    train(args, seed)
+  File "train.py", line 109, in train
+    for idx, vb in enumerate(val_blocks + train_blocks):
+numpy.core._exceptions.UFuncTypeError: ufunc 'add' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U10')) -> dtype('<U10')
 
-real	16m37.067s
-user	18m41.310s
-sys	0m25.410s
+real	16m39.119s
+user	18m37.334s
+sys	0m25.392s

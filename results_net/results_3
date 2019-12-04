@@ -1,9 +1,3 @@
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Sequential. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type ReLU. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
 epoch: 0 train loss: 3.984005610148112
 epoch: 0 val loss: 3.932459686476067
 epoch: 1 train loss: 3.9219579696655273
@@ -46,14 +40,25 @@ epoch: 19 train loss: 0.5266381800174713
 epoch: 19 val loss: 0.6491936085667114
 epoch: 20 train loss: 0.496339350938797
 epoch: 20 val loss: 0.6513535175051937
-val loss went up, stopping now
-finding f1 on jones_s
-best f1: 0.8709120020291371
-linkage for best f1: 1.1844600439071655
-finding f1 on robinson_h
-best f1: 0.8737864077669902
-linkage for best f1: -1.9515466690063477
+epoch: 21 train loss: 0.47228603561719257
+epoch: 21 val loss: 0.6524019250242273
+epoch: 22 train loss: 0.4406719704469045
+epoch: 22 val loss: 0.6573396722365014
+val loss hasn't improved in 3 epochs, stopping now
+jones_s best f1: 0.8709120020291371 best link: 1.1844600439071655
+robinson_h best f1: 0.8737864077669902 best link: -1.9515466690063477
+best threshold: 1.4963833307327974
+227 data points
+200 merged performed
+test f1 on moore_a: 0.701843208606914
+72 data points
+49 merged performed
+test f1 on allen_d: 0.2252252252252252
+216 data points
+174 merged performed
+test f1 on lee_l: 0.7426415094339622
+test f1: 0.5565699810887005
 
-real	24m36.983s
-user	26m14.900s
-sys	0m28.558s
+real	29m42.382s
+user	31m16.915s
+sys	0m51.004s

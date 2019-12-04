@@ -1,109 +1,74 @@
-/home/cthorrez/.local/lib/python3.7/site-packages/torch/serialization.py:292: UserWarning: Couldn't retrieve source code for container of type Linear. It won't be checked for correctness upon loading.
-  "type " + obj.__name__ + ". It won't be checked "
-epoch: 0 train loss: 3.820568005243937
-epoch: 0 val loss: 3.659859007834255
-epoch: 1 train loss: 3.727067232131958
-epoch: 1 val loss: 3.533463278733331
-epoch: 2 train loss: 3.6230944792429605
-epoch: 2 val loss: 3.3946338835140812
-epoch: 3 train loss: 3.501816987991333
-epoch: 3 val loss: 3.2402358402897047
-epoch: 4 train loss: 3.3620103200276694
-epoch: 4 val loss: 3.065634875940696
-epoch: 5 train loss: 3.198066075642904
-epoch: 5 val loss: 2.86775815214207
-epoch: 6 train loss: 3.0167833169301352
-epoch: 6 val loss: 2.68614023026971
-epoch: 7 train loss: 2.869628349939982
-epoch: 7 val loss: 2.5246341511102495
-epoch: 8 train loss: 2.7489991188049316
-epoch: 8 val loss: 2.3798224981686085
-epoch: 9 train loss: 2.639033794403076
-epoch: 9 val loss: 2.2389784599795486
-epoch: 10 train loss: 2.5198424657185874
-epoch: 10 val loss: 2.092961982007687
-epoch: 11 train loss: 2.393852949142456
-epoch: 11 val loss: 1.9333286511795333
-epoch: 12 train loss: 2.2572226524353027
-epoch: 12 val loss: 1.7638501726883336
-epoch: 13 train loss: 2.1102753480275473
-epoch: 13 val loss: 1.6032383439977185
-epoch: 14 train loss: 1.9821054935455322
-epoch: 14 val loss: 1.456900655377747
-epoch: 15 train loss: 1.8737942377726238
-epoch: 15 val loss: 1.3407802748019613
-epoch: 16 train loss: 1.8121942679087322
-epoch: 16 val loss: 1.3010049987577712
-epoch: 17 train loss: 1.776581843694051
-epoch: 17 val loss: 1.2662801405351853
-epoch: 18 train loss: 1.7462788422902424
-epoch: 18 val loss: 1.2273361924692625
-epoch: 19 train loss: 1.6922695239384968
-epoch: 19 val loss: 1.196722217581489
-epoch: 20 train loss: 1.6447083155314128
-epoch: 20 val loss: 1.1669310057669684
-epoch: 21 train loss: 1.5980654160181682
-epoch: 21 val loss: 1.1453231229506038
-epoch: 22 train loss: 1.5516108274459839
-epoch: 22 val loss: 1.1129388396566777
-epoch: 23 train loss: 1.5050030152002971
-epoch: 23 val loss: 1.0791866498680003
-epoch: 24 train loss: 1.4579902092615764
-epoch: 24 val loss: 1.0506291586952201
-epoch: 25 train loss: 1.4287533362706502
-epoch: 25 val loss: 1.029050801564683
-epoch: 26 train loss: 1.4059099753697712
-epoch: 26 val loss: 1.0080854528745724
-epoch: 27 train loss: 1.3797989686330159
-epoch: 27 val loss: 0.9881500063737411
-epoch: 28 train loss: 1.3552638292312622
-epoch: 28 val loss: 0.9674880269469956
-epoch: 29 train loss: 1.330666462580363
-epoch: 29 val loss: 0.9474125189094655
-epoch: 30 train loss: 1.3053625226020813
-epoch: 30 val loss: 0.9242714205983666
-epoch: 31 train loss: 1.2794775168100994
-epoch: 31 val loss: 0.9039584240072092
-epoch: 32 train loss: 1.2519707083702087
-epoch: 32 val loss: 0.8854597768327415
-epoch: 33 train loss: 1.2250655889511108
-epoch: 33 val loss: 0.8690851374584085
-epoch: 34 train loss: 1.1975899537404378
-epoch: 34 val loss: 0.8534376966394595
-epoch: 35 train loss: 1.1690189639727275
-epoch: 35 val loss: 0.8362694796267731
-epoch: 36 train loss: 1.1392436822255452
-epoch: 36 val loss: 0.8180274814953867
-epoch: 37 train loss: 1.1091257731119792
-epoch: 37 val loss: 0.8004759263260532
-epoch: 38 train loss: 1.0849632422129314
-epoch: 38 val loss: 0.7888644719247353
-epoch: 39 train loss: 1.0682974259058635
-epoch: 39 val loss: 0.7835680922372703
-epoch: 40 train loss: 1.054955502351125
-epoch: 40 val loss: 0.7773586444764781
-epoch: 41 train loss: 1.0399246017138164
-epoch: 41 val loss: 0.7655776574736238
-epoch: 42 train loss: 1.0270563960075378
-epoch: 42 val loss: 0.7543831428250634
-epoch: 43 train loss: 1.0168492992719014
-epoch: 43 val loss: 0.7525614155174205
-epoch: 44 train loss: 1.00928791364034
-epoch: 44 val loss: 0.7525437252880454
-epoch: 45 train loss: 1.0053162574768066
-epoch: 45 val loss: 0.7511242129488567
-epoch: 46 train loss: 0.9985005656878153
-epoch: 46 val loss: 0.7493004874966538
-epoch: 47 train loss: 0.9938711921374003
-epoch: 47 val loss: 0.7502923275538307
-val loss went up, stopping now
-finding f1 on jones_s
-best f1: 0.8571014305967264
-linkage for best f1: 1.2997558116912842
-finding f1 on robinson_h
-best f1: 0.8571428571428572
-linkage for best f1: -0.6596469879150391
+epoch: 0 train loss: 3.798290411631266
+epoch: 0 val loss: 3.5249421462478625
+epoch: 1 train loss: 3.595116456349691
+epoch: 1 val loss: 3.2419113772154846
+epoch: 2 train loss: 3.335715134938558
+epoch: 2 val loss: 2.8937730870817786
+epoch: 3 train loss: 3.0137696266174316
+epoch: 3 val loss: 2.557807841261299
+epoch: 4 train loss: 2.7603543599446616
+epoch: 4 val loss: 2.287716146149029
+epoch: 5 train loss: 2.5583202838897705
+epoch: 5 val loss: 2.026864304952656
+epoch: 6 train loss: 2.33746337890625
+epoch: 6 val loss: 1.730879793502501
+epoch: 7 train loss: 2.0834908485412598
+epoch: 7 val loss: 1.448879037364494
+epoch: 8 train loss: 1.873674472173055
+epoch: 8 val loss: 1.281152857147684
+epoch: 9 train loss: 1.7730127573013306
+epoch: 9 val loss: 1.2251234865275367
+epoch: 10 train loss: 1.7042529980341594
+epoch: 10 val loss: 1.1568445039075255
+epoch: 11 train loss: 1.6105188528696697
+epoch: 11 val loss: 1.09808887207501
+epoch: 12 train loss: 1.5245708227157593
+epoch: 12 val loss: 1.0530164216490672
+epoch: 13 train loss: 1.4479163487752278
+epoch: 13 val loss: 1.0280814118732036
+epoch: 14 train loss: 1.4037514130274455
+epoch: 14 val loss: 0.9900437055096978
+epoch: 15 train loss: 1.3595365683237712
+epoch: 15 val loss: 0.9494914979824992
+epoch: 16 train loss: 1.3172005613644917
+epoch: 16 val loss: 0.9066728016309578
+epoch: 17 train loss: 1.2640185952186584
+epoch: 17 val loss: 0.8657080960015651
+epoch: 18 train loss: 1.2028470436731975
+epoch: 18 val loss: 0.8348612385374216
+epoch: 19 train loss: 1.1459568341573079
+epoch: 19 val loss: 0.8048921446589863
+epoch: 20 train loss: 1.0983492930730183
+epoch: 20 val loss: 0.7870823252233397
+epoch: 21 train loss: 1.0719955563545227
+epoch: 21 val loss: 0.7699775250603136
+epoch: 22 train loss: 1.0381858547528584
+epoch: 22 val loss: 0.7580274811011213
+epoch: 23 train loss: 1.0193392038345337
+epoch: 23 val loss: 0.7547648367607569
+epoch: 24 train loss: 1.0171960989634197
+epoch: 24 val loss: 0.7490486189616767
+epoch: 25 train loss: 1.0105663140614827
+epoch: 25 val loss: 0.7498400223021414
+epoch: 26 train loss: 1.0037411053975422
+epoch: 26 val loss: 0.757397564471131
+epoch: 27 train loss: 0.9994823733965555
+epoch: 27 val loss: 0.7659281780008078
+val loss hasn't improved in 3 epochs, stopping now
+jones_s best f1: 0.8579722298376043 best link: 1.5565063953399658
+robinson_h best f1: 0.8571428571428572 best link: -0.7800599932670593
+best threshold: 1.5565977268173032
+227 data points
+212 merged performed
+test f1 on moore_a: 0.5703703703703704
+19 data points
+12 merged performed
+test f1 on mcguire_j: 0.6917293233082707
+222 data points
+201 merged performed
+test f1 on young_s: 0.6022599616731646
+test f1: 0.621453218450602
 
-real	49m15.258s
-user	53m9.281s
-sys	0m54.765s
+real	34m47.685s
+user	36m54.682s
+sys	0m59.046s
