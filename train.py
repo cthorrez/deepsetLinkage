@@ -19,9 +19,9 @@ def train(args, seed=0):
     np.random.seed(seed)
     torch.manual_seed(seed)
     idxs = np.random.permutation(len(blocks))
-    train_blocks = blocks[idxs[0:3]]
-    val_blocks = blocks[idxs[3:5]]
-    test_blocks = blocks[idxs[5:8]]
+    train_blocks = list(blocks[idxs[0:3]])
+    val_blocks = list(blocks[idxs[3:5]])
+    test_blocks = list(blocks[idxs[5:8]])
 
     # train_blocks = ['robinson_h', 'mcguire_j']
     # val_blocks = ['moore_a', 'blum_a']

@@ -2,6 +2,7 @@ import os
 import shutil
 import json
 import time
+import numpy as np
 
 def main():
     args = json.load(open('config.json'))
@@ -11,9 +12,7 @@ def main():
     os.mkdir(path)
     shutil.copy('config.json', path)
 
-    queues = 24*['1080ti-short'] + 12*['1080ti-long'] + 24*['titanx-short']
-
-    queues = 3*['1080ti-short'] + 3*['1080ti-long'] + 3*['titanx-short'] + 3*['titanx-short'] + 3*['m40-short'] + 3*['m40-short']
+    queues = 3*['1080ti-short'] + 3*['1080ti-long'] + 3*['titanx-short'] + 3*['titanx-long']
     for i, q in zip(np.arange(args['n_trials']), queues):
         # run trails with different seeds
         fname = path + '/results_' + str(i)

@@ -1,6 +1,6 @@
 {
     "path" : "results_linear",
-    "n_trials" : 18,
+    "n_trials" : 12,
     "n_epochs" : 100,
     "patience" : 3,
 
