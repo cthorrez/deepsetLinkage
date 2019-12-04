@@ -72,6 +72,6 @@ test f1 on robinson_h: 0.8256880733944955
 test f1 on blum_a: 0.5034705407586763
 test f1: 0.7168623951939144
 
-real	39m17.500s
-user	42m47.436s
-sys	0m40.872s
+real	37m1.414s
+user	40m8.602s
+sys	0m44.154s

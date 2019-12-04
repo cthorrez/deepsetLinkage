@@ -1,0 +1,63 @@
+epoch: 0 train loss: 3.9826602141062417
+epoch: 0 val loss: 3.806947114257465
+epoch: 1 train loss: 3.751056671142578
+epoch: 1 val loss: 3.6125674376371784
+epoch: 2 train loss: 3.47528338432312
+epoch: 2 val loss: 3.390402094209086
+epoch: 3 train loss: 3.159196376800537
+epoch: 3 val loss: 3.129518910291347
+epoch: 4 train loss: 2.786794900894165
+epoch: 4 val loss: 2.869302696868279
+epoch: 5 train loss: 2.4763454596201577
+epoch: 5 val loss: 2.735008422862795
+epoch: 6 train loss: 2.2210715611775718
+epoch: 6 val loss: 2.595838290353314
+epoch: 7 train loss: 1.9596006870269775
+epoch: 7 val loss: 2.423835891856611
+epoch: 8 train loss: 1.6826865275700886
+epoch: 8 val loss: 2.227225720293616
+epoch: 9 train loss: 1.4095571438471477
+epoch: 9 val loss: 2.0661225020885468
+epoch: 10 train loss: 1.252303918202718
+epoch: 10 val loss: 1.989622328226599
+epoch: 11 train loss: 1.1677224437395732
+epoch: 11 val loss: 1.8693089843656878
+epoch: 12 train loss: 1.0777381459871929
+epoch: 12 val loss: 1.7220849918943228
+epoch: 13 train loss: 0.9937675396601359
+epoch: 13 val loss: 1.5620012413314048
+epoch: 14 train loss: 0.922560453414917
+epoch: 14 val loss: 1.3834842628824857
+epoch: 15 train loss: 0.8657606244087219
+epoch: 15 val loss: 1.2898968863541596
+epoch: 16 train loss: 0.852396031220754
+epoch: 16 val loss: 1.2588569049052554
+epoch: 17 train loss: 0.8274672031402588
+epoch: 17 val loss: 1.2562965029754356
+epoch: 18 train loss: 0.7838186422983805
+epoch: 18 val loss: 1.2899564206430343
+epoch: 19 train loss: 0.7330918510754904
+epoch: 19 val loss: 1.343967689869297
+epoch: 20 train loss: 0.70085209608078
+epoch: 20 val loss: 1.369507136298938
+val loss hasn't improved in 3 epochs, stopping now
+young_s best f1: 0.6232264034546577 best link: -2.407862424850464
+allen_d best f1: 0.5 best link: -2.7941901683807373
+lee_l best f1: 0.8067796610169492 best link: -0.5536184906959534
+robinson_h best f1: 0.8737864077669902 best link: -1.1936790943145752
+jones_s best f1: 0.8588643301209824 best link: 1.067569375038147
+best threshold: -0.553618263605351
+19 data points
+9 merged performed
+test f1 on mcguire_j: 0.5
+201 data points
+155 merged performed
+test f1 on blum_a: 0.4072530400034375
+227 data points
+180 merged performed
+test f1 on moore_a: 0.5908239199100594
+test f1: 0.4993589866378323
+
+real	41m12.893s
+user	38m57.215s
+sys	2m27.809s

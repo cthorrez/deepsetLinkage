@@ -98,6 +98,6 @@ test f1 on blum_a: 0.6536925422990342
 test f1 on allen_d: 0.25396825396825395
 test f1: 0.5022621547199567
 
-real	71m11.503s
-user	70m48.403s
-sys	4m5.846s
+real	74m55.356s
+user	76m28.491s
+sys	3m15.375s

@@ -70,6 +70,6 @@ test f1 on jones_s: 0.7147025813692481
 test f1 on robinson_h: 0.8256880733944955
 test f1: 0.6702486322497127
 
-real	17m57.037s
-user	19m45.033s
-sys	0m28.849s
+real	17m41.493s
+user	19m45.826s
+sys	0m24.481s
