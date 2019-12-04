@@ -12,7 +12,7 @@ def unequal_mean(arrays):
     arrays = np.vstack(arrays)
     n, d = arrays.shape
     assert d == maxlen
-    print(arrays)
+    # print(arrays)
     return arrays.mean(axis=0)
 
 
