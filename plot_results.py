@@ -9,6 +9,7 @@ def main(path):
     train_arrays = [np.load(path + '/train_losses_'+str(x)+'.npy') for x in range(args['n_trials'])]
     val_arrays = [np.load(path + '/val_losses_'+str(x)+'.npy') for x in range(args['n_trials'])]
 
+
     train_means = unequal_mean(train_arrays)
     val_means = unequal_mean(val_arrays)
 

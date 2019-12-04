@@ -13,24 +13,30 @@ def unequal_mean(arrays):
     n, d = arrays.shape
     assert d == maxlen
     # print(arrays)
-    return arrays.mean(axis=0)
+    mu = arrays.mean(axis=0)
+    return mu
+
+
+def find_thresh(link_list, f1_list, n=100000):
+    n_lists = len(link_list)
+    low = np.min([np.min(l) for l in link_list])
+    high= np.max([np.max(l) for l in link_list])
+    x = np.linspace(start=low, stop=high, num=n)
+
+    interpolated = np.zeros((n_lists, n))
+    for idx, (links, f1s) in enumerate(zip(link_list, f1_list)):
+        interpolated[idx,:] = np.interp(x, links, f1s)
+
+    interp_mean = interpolated.mean(axis=0)
+    best_thresh = x[np.argmax(interp_mean)]
+    return best_thresh
 
 
 
 
 
-# creates a dictionary (i,j) -> pair feature vector
+
 def process_pair_features(pair_features):
-    pairs = {}
-    for row in pair_features:
-        i, j = row[:2]
-        i, j = int(i), int(j)
-        pairs[(i,j)] = torch.tensor(row[2:-1], dtype=torch.float, requires_grad=True)
-        # pairs[(i,j)] = torch.FloatTensor(row[2:-1])
-    return pairs
-
-
-def process_pair_features2(pair_features):
     n_points = np.max(pair_features[:,1]).astype(np.int) + 1
     pair_dim = pair_features.shape[1] - 3
     pair_tensor = torch.FloatTensor(np.zeros((n_points, n_points, pair_dim)))
@@ -41,23 +47,4 @@ def process_pair_features2(pair_features):
         cumsum += (n_points - i -1)
 
     return pair_tensor
-
-
-
-
-# class lt_matrix():
-#   def __init__(self, M):
-#       self.M = M 
-
-#   def __getitem__(self, idxs):
-#       if len(idxs) == 1:
-#           return self.M[idxs]
-
-#       if len(idxs) == 2:
-#           i,j = max(idxs), min(idxs)
-#           return self.M[i,j]
-
-#       else:
-#           print('problem indexing lt_matrix with:', idxs)
-#           exit(1)
 

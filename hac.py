@@ -337,8 +337,41 @@ class HAC():
 
 
 
+    # cluster using the given linkage function but don't train
+    # does not force it to do pure clusterings. Stop when the minimum linkage available in greater than thresh
+    # return the 1 score of the flat clustering at the stopping point
+    def get_test_f1(self, thresh):
+        with torch.no_grad():
 
+            print(len(self.gt_clusters), 'data points')
 
+            n_merges = 0
+            while len(self.active_clusters) > 2:
+                min_link = torch.min(self.linkage_matrix).detach().cpu()
+                if min_link > thresh:
+                    break
+
+                n_merges += 1
+                merge_idx = int(torch.argmin(self.linkage_matrix).detach().cpu())
+                i,j = np.unravel_index(merge_idx, (self.n_points, self.n_points))
+                i,j = min(i,j), max(i,j)
+
+                # put stuff from j into i
+                self.cluster_idxs[i].extend(self.cluster_idxs[j])
+
+                # remove cluster j
+                del self.cluster_idxs[j]
+                self.active_clusters.remove(j)
+                self.flat_clusters = self.get_flat_clusters()
+
+                #upate the linkage matrix with values for new cluster
+                self.update_linkage_matrix(i,j)
+
+            print(n_merges, 'merged performed')
+            preds = self.get_flat_clusters()
+            f1= pairwise_f1(self.gt_clusters, preds)
+
+        return f1
 
 
 
