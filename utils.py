@@ -6,6 +6,14 @@ import torch
 # takes the mean o them where shorter ones are padded with their last value
 def unequal_mean(arrays):
     maxlen = np.max([len(a) for a in arrays])
+    for i in range(len(arrays)):
+        pad_width = maxlen - len(arrays[i])
+        arrays[i] = np.pad(arrays[i], mode='edge', pad_width=(0,pad_width))
+    arrays = np.vstack(arrays)
+    n, d = arrays.shape
+    assert d == maxlen
+    print(arrays)
+    return arrays.mean(axis=0)
 
 
 

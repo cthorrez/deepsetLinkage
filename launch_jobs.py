@@ -9,6 +9,7 @@ def main():
     if os.path.exists(path):
         shutil.rmtree(path)
     os.mkdir(path)
+    shutil.copyfile('config.json', path)
 
     
     for i in range(args['n_trials']):
