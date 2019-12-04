@@ -1,0 +1,41 @@
+epoch: 0 train loss: 3.936099370320638
+epoch: 0 val loss: 3.900634905008169
+epoch: 1 train loss: 3.753554344177246
+epoch: 1 val loss: 3.696267063157258
+epoch: 2 train loss: 3.461308320363363
+epoch: 2 val loss: 3.3336742534607535
+epoch: 3 train loss: 2.9549010594685874
+epoch: 3 val loss: 2.649950014273456
+epoch: 4 train loss: 2.0735614697138467
+epoch: 4 val loss: 1.831602337145116
+epoch: 5 train loss: 1.3252655665079753
+epoch: 5 val loss: 1.2877112059842286
+epoch: 6 train loss: 0.9164406259854635
+epoch: 6 val loss: 0.9582137073784969
+epoch: 7 train loss: 0.7307515541712443
+epoch: 7 val loss: 0.7557289147860307
+epoch: 8 train loss: 0.5878433585166931
+epoch: 8 val loss: 0.6363995596447394
+epoch: 9 train loss: 0.6001193324724833
+epoch: 9 val loss: 0.6209698416593454
+train loss went up, stopping now
+blum_a best f1: 0.9844609132201769 best link: 1.7832152843475342
+young_s best f1: 0.6149280986076238 best link: -3.8224480152130127
+lee_l best f1: 0.7755281690140845 best link: -2.84895658493042
+jones_s best f1: 0.8554583552432398 best link: 0.26023176312446594
+mcguire_j best f1: 0.9166666666666666 best link: 2.5793142318725586
+best threshold: 2.0651778766437268
+31 data points
+24 merged performed
+test f1 on robinson_h: 0.49327354260089684
+72 data points
+57 merged performed
+test f1 on allen_d: 0.1130298273155416
+227 data points
+211 merged performed
+test f1 on moore_a: 0.6930935195045952
+test f1: 0.43313229647367785
+
+real	27m9.485s
+user	26m26.266s
+sys	0m49.517s

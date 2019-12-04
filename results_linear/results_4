@@ -51,18 +51,21 @@ epoch: 24 val loss: 1.3024291075159022
 val loss hasn't improved in 3 epochs, stopping now
 allen_d best f1: 0.5079365079365079 best link: -3.1918957233428955
 moore_a best f1: 0.6883365200764819 best link: 1.9148640632629395
-best threshold: -2.731487792177612
+mcguire_j best f1: 0.9924812030075187 best link: 2.2447214126586914
+young_s best f1: 0.6208272580768935 best link: -2.705716848373413
+robinson_h best f1: 0.8571428571428572 best link: -1.1939258575439453
+best threshold: 0.1808914029730211
 201 data points
-122 merged performed
-test f1 on blum_a: 0.07358902400997817
+164 merged performed
+test f1 on blum_a: 0.4585828343313373
 471 data points
-327 merged performed
-test f1 on jones_s: 0.4635575457317073
+399 merged performed
+test f1 on jones_s: 0.8423838292389924
 216 data points
-112 merged performed
-test f1 on lee_l: 0.42442205097806757
-test f1: 0.32052287357325104
+148 merged performed
+test f1 on lee_l: 0.7057268722466961
+test f1: 0.6688978452723419
 
-real	12m32.142s
-user	14m2.945s
-sys	0m19.029s
+real	12m9.763s
+user	13m21.593s
+sys	0m21.798s

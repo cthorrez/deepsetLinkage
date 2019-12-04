@@ -1,0 +1,65 @@
+epoch: 0 train loss: 3.8543572425842285
+epoch: 0 val loss: 3.730529404643426
+epoch: 1 train loss: 3.76814866065979
+epoch: 1 val loss: 3.643160739650579
+epoch: 2 train loss: 3.6849865118662515
+epoch: 2 val loss: 3.546255028167131
+epoch: 3 train loss: 3.58245857556661
+epoch: 3 val loss: 3.4230758385224775
+epoch: 4 train loss: 3.4719391663869223
+epoch: 4 val loss: 3.291381742668336
+epoch: 5 train loss: 3.3468892574310303
+epoch: 5 val loss: 3.1416834866631653
+epoch: 6 train loss: 3.2027269999186196
+epoch: 6 val loss: 2.9626516809892376
+epoch: 7 train loss: 3.036629835764567
+epoch: 7 val loss: 2.756478303348073
+epoch: 8 train loss: 2.8544562657674155
+epoch: 8 val loss: 2.529569016059778
+epoch: 9 train loss: 2.692579428354899
+epoch: 9 val loss: 2.3372572482035743
+epoch: 10 train loss: 2.551887591679891
+epoch: 10 val loss: 2.183493907666068
+epoch: 11 train loss: 2.4194427728652954
+epoch: 11 val loss: 2.044319766258363
+epoch: 12 train loss: 2.2883512576421103
+epoch: 12 val loss: 1.8988476575746756
+epoch: 13 train loss: 2.142028490702311
+epoch: 13 val loss: 1.7360609079813818
+epoch: 14 train loss: 2.009056727091471
+epoch: 14 val loss: 1.587188933873315
+epoch: 15 train loss: 1.879329005877177
+epoch: 15 val loss: 1.437606080343345
+epoch: 16 train loss: 1.757678747177124
+epoch: 16 val loss: 1.332453420461377
+epoch: 17 train loss: 1.6913865208625793
+epoch: 17 val loss: 1.2727193603547906
+epoch: 18 train loss: 1.64395276705424
+epoch: 18 val loss: 1.225767804198039
+epoch: 19 train loss: 1.5998074014981587
+epoch: 19 val loss: 1.1885102793747269
+epoch: 20 train loss: 1.5527013540267944
+epoch: 20 val loss: 1.1522669686973672
+epoch: 21 train loss: 1.5102036595344543
+epoch: 21 val loss: 1.106503306262959
+epoch: 22 train loss: 1.4553905725479126
+epoch: 22 val loss: 1.0709549780985488
+epoch: 23 train loss: 1.395175278186798
+epoch: 23 val loss: 1.0919743367620318
+epoch: 24 train loss: 1.3545076847076416
+epoch: 24 val loss: 1.1326265935885145
+epoch: 25 train loss: 1.3236421545346577
+epoch: 25 val loss: 1.1413598833263383
+val loss hasn't improved in 3 epochs, stopping now
+Traceback (most recent call last):
+  File "train.py", line 152, in <module>
+    main(args, seed)
+  File "train.py", line 145, in main
+    train(args, seed)
+  File "train.py", line 109, in train
+    for idx, vb in enumerate(val_blocks + train_blocks):
+numpy.core._exceptions.UFuncTypeError: ufunc 'add' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U10')) -> dtype('<U10')
+
+real	42m56.302s
+user	42m30.618s
+sys	2m59.516s

@@ -59,18 +59,21 @@ epoch: 28 val loss: 0.6603525714419587
 train loss went up, stopping now
 young_s best f1: 0.6324235448865505 best link: 1.8603395223617554
 robinson_h best f1: 0.8737864077669902 best link: -1.5244122743606567
-best threshold: 1.7131499671644193
+jones_s best f1: 0.8987106932946697 best link: 1.3567355871200562
+lee_l best f1: 0.7678806494076349 best link: -1.3455625772476196
+moore_a best f1: 0.594399723443133 best link: 1.4879779815673828
+best threshold: 1.47237919073088
 72 data points
-53 merged performed
-test f1 on allen_d: 0.20833333333333334
+48 merged performed
+test f1 on allen_d: 0.2403846153846154
 201 data points
-190 merged performed
-test f1 on blum_a: 0.8414512301735981
+186 merged performed
+test f1 on blum_a: 0.640521917607389
 19 data points
 10 merged performed
 test f1 on mcguire_j: 0.8214285714285715
-test f1: 0.6237377116451676
+test f1: 0.5674450348068586
 
-real	55m20.724s
-user	55m16.223s
-sys	3m22.528s
+real	54m34.555s
+user	54m55.890s
+sys	2m56.956s

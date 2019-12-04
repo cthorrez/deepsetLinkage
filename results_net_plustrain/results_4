@@ -1,0 +1,53 @@
+epoch: 0 train loss: 3.979605277379354
+epoch: 0 val loss: 3.942578410875515
+epoch: 1 train loss: 3.9278196493784585
+epoch: 1 val loss: 3.8882504012502532
+epoch: 2 train loss: 3.8543547789255777
+epoch: 2 val loss: 3.8053493068231923
+epoch: 3 train loss: 3.739712397257487
+epoch: 3 val loss: 3.664997930952053
+epoch: 4 train loss: 3.5499762694040933
+epoch: 4 val loss: 3.4371497886735423
+epoch: 5 train loss: 3.2561910152435303
+epoch: 5 val loss: 3.096830639664595
+epoch: 6 train loss: 2.792471170425415
+epoch: 6 val loss: 2.6003228927463056
+epoch: 7 train loss: 2.209902048110962
+epoch: 7 val loss: 2.219525472185463
+epoch: 8 train loss: 1.833979884783427
+epoch: 8 val loss: 1.9502674413407697
+epoch: 9 train loss: 1.4855356613794963
+epoch: 9 val loss: 1.6890366110798274
+epoch: 10 train loss: 1.1602533062299092
+epoch: 10 val loss: 1.5614019718451715
+epoch: 11 train loss: 0.9886707067489624
+epoch: 11 val loss: 1.5550517025968624
+epoch: 12 train loss: 0.9091038703918457
+epoch: 12 val loss: 1.5274715926404574
+epoch: 13 train loss: 0.8512372573216757
+epoch: 13 val loss: 1.4102875677024984
+epoch: 14 train loss: 0.8031180302302042
+epoch: 14 val loss: 1.2783904983277639
+epoch: 15 train loss: 0.7360692421595255
+epoch: 15 val loss: 1.2261872386876747
+epoch: 16 train loss: 0.6927190025647482
+epoch: 16 val loss: 1.151697429652511
+epoch: 17 train loss: 0.6631491084893545
+epoch: 17 val loss: 1.1551582626490309
+epoch: 18 train loss: 0.6541150311628977
+epoch: 18 val loss: 1.2201729270001795
+epoch: 19 train loss: 0.6360401709874471
+epoch: 19 val loss: 1.3485769535477052
+val loss hasn't improved in 3 epochs, stopping now
+Traceback (most recent call last):
+  File "train.py", line 152, in <module>
+    main(args, seed)
+  File "train.py", line 145, in main
+    train(args, seed)
+  File "train.py", line 109, in train
+    for idx, vb in enumerate(val_blocks + train_blocks):
+numpy.core._exceptions.UFuncTypeError: ufunc 'add' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U10')) -> dtype('<U10')
+
+real	8m48.441s
+user	9m42.986s
+sys	0m24.797s
