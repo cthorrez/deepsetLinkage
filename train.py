@@ -138,6 +138,7 @@ def train(args, seed=0):
         test_f1s.append(f1)
 
     print('test f1:', np.mean(test_f1s))
+    np.save(args['path']+'/test_f1_'+str(seed), np.mean(test_f1s))
         
         
 def main(args, seed):
