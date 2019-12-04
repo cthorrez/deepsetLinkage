@@ -23,9 +23,9 @@ def train(args, seed=0):
     val_blocks = blocks[idxs[3:5]]
     test_blocks = blocks[idxs[5:8]]
 
-    train_blocks = ['robinson_h', 'mcguire_j']
-    val_blocks = ['moore_a', 'blum_a']
-    test_blocks = ['lee_l', 'jones_s']
+    # train_blocks = ['robinson_h', 'mcguire_j']
+    # val_blocks = ['moore_a', 'blum_a']
+    # test_blocks = ['lee_l', 'jones_s']
 
 
 
