@@ -80,6 +80,6 @@ test f1 on mcguire_j: 0.5
 test f1 on jones_s: 0.48432627226316155
 test f1: 0.45718405617961055
 
-real	32m49.944s
-user	32m32.582s
-sys	0m26.224s
+real	26m5.953s
+user	28m20.743s
+sys	0m42.993s

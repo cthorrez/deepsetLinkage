@@ -58,6 +58,6 @@ test f1 on blum_a: 0.4072530400034375
 test f1 on moore_a: 0.5908239199100594
 test f1: 0.4993589866378323
 
-real	50m1.936s
-user	48m33.048s
-sys	1m41.249s
+real	40m6.784s
+user	37m51.575s
+sys	2m28.793s

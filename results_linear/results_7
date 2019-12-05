@@ -72,6 +72,6 @@ test f1 on mcguire_j: 0.6917293233082707
 test f1 on young_s: 0.6022599616731646
 test f1: 0.621453218450602
 
-real	30m32.046s
-user	33m11.434s
-sys	0m32.108s
+real	38m31.208s
+user	38m18.216s
+sys	0m29.595s

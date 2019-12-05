@@ -23,7 +23,7 @@ class DeepSetLinkage():
             #                      nn.ReLU(),
             #                      nn.Linear(in_dim, 1),
             #                     )
-
+            print('nonlinear')
             self.feature_fn = nn.Sequential(
                                     nn.Linear(in_dim, 1),
                                     nn.ReLU(),
@@ -48,6 +48,7 @@ class DeepSetLinkage():
 
     def score_batch(self, pairs):
         # input is (bs, n, d), output is (bs, 1)
+        print(pairs.shape)        
         mu = torch.mean(pairs, dim=1, keepdim=False)
         return self.scoring_fn(mu)
 

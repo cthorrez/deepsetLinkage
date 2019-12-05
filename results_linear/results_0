@@ -74,6 +74,6 @@ test f1 on blum_a: 0.640521917607389
 test f1 on mcguire_j: 0.8214285714285715
 test f1: 0.5674450348068586
 
-real	72m22.854s
-user	73m44.596s
-sys	2m18.471s
+real	59m17.602s
+user	60m0.910s
+sys	2m44.026s

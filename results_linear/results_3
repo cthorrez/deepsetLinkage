@@ -86,6 +86,6 @@ test f1 on allen_d: 0.17763157894736842
 test f1 on lee_l: 0.7173380035026269
 test f1: 0.5419903907583715
 
-real	41m38.594s
-user	44m10.922s
-sys	0m55.376s
+real	49m43.451s
+user	54m12.826s
+sys	0m42.425s

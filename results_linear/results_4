@@ -66,6 +66,6 @@ test f1 on jones_s: 0.8423838292389924
 test f1 on lee_l: 0.7057268722466961
 test f1: 0.6688978452723419
 
-real	15m10.069s
-user	16m46.873s
-sys	0m20.773s
+real	15m5.406s
+user	14m58.708s
+sys	0m11.512s

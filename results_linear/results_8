@@ -72,6 +72,6 @@ test f1 on mcguire_j: 0.7540983606557378
 test f1 on robinson_h: 0.4602510460251046
 test f1: 0.5931128570467564
 
-real	47m45.321s
-user	47m29.415s
-sys	0m27.789s
+real	38m17.323s
+user	41m16.925s
+sys	0m51.940s

@@ -96,6 +96,6 @@ test f1 on allen_d: 0.10726643598615916
 test f1 on moore_a: 0.7748976807639836
 test f1: 0.4203005527594607
 
-real	94m49.729s
-user	91m42.462s
-sys	3m26.963s
+real	81m9.951s
+user	78m3.754s
+sys	3m33.968s

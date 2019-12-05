@@ -48,6 +48,6 @@ test f1 on moore_a: 0.5853707214848818
 test f1 on lee_l: 0.4969485614646904
 test f1: 0.5274397609831908
 
-real	27m22.248s
-user	27m46.229s
-sys	1m30.513s
+real	36m47.708s
+user	35m17.072s
+sys	1m40.581s
