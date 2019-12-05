@@ -1,0 +1,55 @@
+epoch: 0 train loss: 3.982266902923584
+epoch: 0 val loss: 3.8903265386837544
+epoch: 1 train loss: 3.8572002251942954
+epoch: 1 val loss: 3.739903617617068
+epoch: 2 train loss: 3.671203295389811
+epoch: 2 val loss: 3.4765469869615346
+epoch: 3 train loss: 3.3690338134765625
+epoch: 3 val loss: 3.0441290496611124
+epoch: 4 train loss: 2.8663556575775146
+epoch: 4 val loss: 2.337341341309015
+epoch: 5 train loss: 2.050806999206543
+epoch: 5 val loss: 1.4631314806803946
+epoch: 6 train loss: 1.3913609782854717
+epoch: 6 val loss: 1.1877057354563025
+epoch: 7 train loss: 1.2495863835016887
+epoch: 7 val loss: 1.0620411831909924
+epoch: 8 train loss: 1.1182327270507812
+epoch: 8 val loss: 0.9390823792154883
+epoch: 9 train loss: 0.9265576203664144
+epoch: 9 val loss: 0.8546312676075308
+epoch: 10 train loss: 0.7382034063339233
+epoch: 10 val loss: 0.7184985068715795
+epoch: 11 train loss: 0.5862344900767008
+epoch: 11 val loss: 0.6882147845600202
+epoch: 12 train loss: 0.5560053785641988
+epoch: 12 val loss: 0.6083539280115194
+epoch: 13 train loss: 0.5183081527551016
+epoch: 13 val loss: 0.5969126690361721
+epoch: 14 train loss: 0.4830874701340993
+epoch: 14 val loss: 0.6541068107672744
+epoch: 15 train loss: 0.46022090315818787
+epoch: 15 val loss: 0.6076863353271801
+epoch: 16 train loss: 0.4366946915785472
+epoch: 16 val loss: 0.6819469939310832
+val loss hasn't improved in 3 epochs, stopping now
+jones_s best f1: 0.8802288620470439 best link: 0.6374179720878601
+robinson_h best f1: 0.8737864077669902 best link: -2.2387726306915283
+blum_a best f1: 0.9793621013133207 best link: 2.3356916904449463
+young_s best f1: 0.774890043982407 best link: 3.881910800933838
+mcguire_j best f1: 1.0 best link: 1.5494844913482666
+best threshold: 1.4713172520776645
+227 data points
+204 merged performed
+test f1 on moore_a: 0.7100671140939598
+72 data points
+52 merged performed
+test f1 on allen_d: 0.21686746987951808
+216 data points
+172 merged performed
+test f1 on lee_l: 0.7348767737117252
+test f1: 0.553937119228401
+
+real	20m54.734s
+user	22m20.677s
+sys	0m22.673s
