@@ -108,7 +108,7 @@ class HAC():
             self.pure_mask[x,y] = self.check_cluster_pair_pure(self.cluster_idxs[x], self.cluster_idxs[y])
 
         features = torch.stack(feature_list)
-        print('features shape', features.shape)
+        # print('features shape', features.shape)
         scores = self.model.scoring_fn(features).squeeze()        
         self.linkage_matrix[min_idxs, max_idxs] = scores
 
