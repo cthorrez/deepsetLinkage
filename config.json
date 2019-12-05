@@ -6,6 +6,7 @@
 
     "margin" : 2.0,
     "lr" : 0.01,
+    "wd" : 0.01,
     "linear" : false,
     "use_gpu" : true
 }

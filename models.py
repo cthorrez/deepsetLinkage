@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class DeepSetLinkage():
-    def __init__(self, in_dim, lr=1e-2, linear=False):
+    def __init__(self, in_dim, lr=1e-2, linear=False, wd=0.):
         super(DeepSetLinkage, self).__init__()
         
         self.in_dim = in_dim
@@ -27,7 +27,7 @@ class DeepSetLinkage():
 
         params = list(self.feature_fn.parameters()) + list(self.scoring_fn.parameters()) 
         params = nn.ParameterList(params)
-        self.optimizer = torch.optim.Adam(params, lr=lr)
+        self.optimizer = torch.optim.Adam(params, lr=lr, weight_decay=wd)
     
     def featurize(self, pairs):
         return self.feature_fn(pairs)

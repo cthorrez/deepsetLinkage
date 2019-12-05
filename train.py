@@ -32,7 +32,7 @@ def train(args, seed=0):
     num_epochs = args['n_epochs']
     feature_dim = 14
     margin = args['margin']
-    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], linear=args['linear'])
+    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], linear=args['linear'], wd=args['wd'])
 
 
 
@@ -105,8 +105,8 @@ def train(args, seed=0):
     # find f1 score
     link_list = []
     f1_list = []
-    for idx, vb in enumerate(val_blocks):
-    # for idx, vb in enumerate(val_blocks + train_blocks):
+    # for idx, vb in enumerate(val_blocks):
+    for idx, vb in enumerate(val_blocks + train_blocks):
         pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
         pairs = process_pair_features(pair_features)
         gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
