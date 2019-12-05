@@ -12,15 +12,24 @@ class DeepSetLinkage():
             self.scoring_fn = nn.Linear(in_dim, 1)
 
         else:       
+            # self.feature_fn = nn.Sequential(
+            #                         nn.Linear(in_dim, in_dim),
+            #                         nn.ReLU(),
+            #                         nn.Linear(in_dim, in_dim)
+            #                     )
+
+            # self.scoring_fn = nn.Sequential(
+            #                      nn.Linear(in_dim, in_dim),
+            #                      nn.ReLU(),
+            #                      nn.Linear(in_dim, 1),
+            #                     )
+
             self.feature_fn = nn.Sequential(
-                                    nn.Linear(in_dim, in_dim),
+                                    nn.Linear(in_dim, 1),
                                     nn.ReLU(),
-                                    nn.Linear(in_dim, in_dim)
                                 )
 
             self.scoring_fn = nn.Sequential(
-                                 nn.Linear(in_dim, in_dim),
-                                 nn.ReLU(),
                                  nn.Linear(in_dim, 1),
                                 )
 
