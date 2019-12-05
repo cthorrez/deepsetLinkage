@@ -39,7 +39,8 @@ class DeepSetLinkage():
         self.optimizer = torch.optim.Adam(params, lr=lr, weight_decay=wd)
     
     def featurize(self, pairs):
-        return self.feature_fn(pairs)
+        x = self.feature_fn(pairs)
+        print('result of featurize', x.shape)
 
     def score(self, pairs):
         # input is (n,d), output is (1,1)
