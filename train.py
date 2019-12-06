@@ -32,9 +32,9 @@ def train(args, seed=0):
 
 
     num_epochs = args['n_epochs']
-    feature_dim = 14
+    in_dim = 14
     margin = args['margin']
-    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], 
+    model = DeepSetLinkage(in_dim=in_dim, lr=args['lr'], 
             linear=args['linear'], wd=args['wd'], feature_dim=args['feature_dim'])
 
 
