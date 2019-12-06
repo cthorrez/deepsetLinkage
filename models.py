@@ -2,35 +2,35 @@ import torch
 import torch.nn as nn
 
 class DeepSetLinkage():
-    def __init__(self, in_dim, lr=1e-2, linear=False, wd=0.):
+    def __init__(self, in_dim, lr=1e-2, linear=False, wd=0., feature_dim=14):
         super(DeepSetLinkage, self).__init__()
         
         self.in_dim = in_dim
 
         if linear:
-            self.feature_fn = nn.Linear(in_dim, in_dim)
-            self.scoring_fn = nn.Linear(in_dim, 1)
+            self.feature_fn = nn.Linear(in_dim, feature_dim)
+            self.scoring_fn = nn.Linear(feature_dim, 1)
 
         else:       
             # self.feature_fn = nn.Sequential(
             #                         nn.Linear(in_dim, in_dim),
             #                         nn.ReLU(),
-            #                         nn.Linear(in_dim, in_dim)
+            #                         nn.Linear(in_dim, feature_dim)
             #                     )
 
             # self.scoring_fn = nn.Sequential(
-            #                      nn.Linear(in_dim, in_dim),
+            #                      nn.Linear(feature_dim, feature_dim),
             #                      nn.ReLU(),
-            #                      nn.Linear(in_dim, 1),
+            #                      nn.Linear(feature_dim, 1),
             #                     )
             print('nonlinear')
             self.feature_fn = nn.Sequential(
-                                    nn.Linear(in_dim, in_dim),
+                                    nn.Linear(in_dim, feature_dim),
                                     nn.ReLU(),
                                 )
 
             self.scoring_fn = nn.Sequential(
-                                 nn.Linear(in_dim, 1),
+                                 nn.Linear(feature_dim, 1),
                                 )
 
 
@@ -49,8 +49,7 @@ class DeepSetLinkage():
         return self.scoring_fn(mu)
 
     def score_batch(self, pairs):
-        # input is (bs, n, d), output is (bs, 1)
-        # print('input to score_batch', pairs.shape)        
+        # input is (bs, n, d), output is (bs, 1)        
         mu = torch.mean(pairs, dim=1, keepdim=False)
         x = self.scoring_fn(mu)
         # print('result of score_batch:', x.shape)

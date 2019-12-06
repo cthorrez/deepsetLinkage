@@ -1,10 +1,12 @@
 {
-    "path" : "netsmall_fixed",
+    "path" : "results",
     "n_trials" : 8,
-    "n_epochs" : 100,
+    "n_epochs" : 50,
     "patience" : 3,
 
-    "margin" : 2.0,
+    "feature_dim" : 1,
+
+    "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,
     "linear" : false,

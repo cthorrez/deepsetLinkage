@@ -25,6 +25,7 @@ def pairwise_f1(y_true, y_pred):  # TODO Optimize this, we do not need to calcul
 	
 	precision 	= truePos / (truePos + falsePos) if (truePos + falsePos) > 0 else 1.
 	recall 		= truePos / (truePos + falseNeg) if (truePos + falseNeg) > 0 else 1.
+	
 	f1 			= 2 * precision * recall / (precision + recall) if precision + recall > 0. else 0.
 	
 	return f1

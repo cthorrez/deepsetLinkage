@@ -23,16 +23,19 @@ def train(args, seed=0):
     val_blocks = list(blocks[idxs[3:5]])
     test_blocks = list(blocks[idxs[5:8]])
 
-    #train_blocks = ['robinson_h']
-    #val_blocks = ['robinson_h']
-    #test_blocks = ['robinson_h']
+    # train_blocks = ['robinson_h', 'mcguire_j']
+    # val_blocks = ['robinson_h']
+    # test_blocks = list(blocks)
+
+    # print(train_blocks)
 
 
 
     num_epochs = args['n_epochs']
     feature_dim = 14
     margin = args['margin']
-    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], linear=args['linear'], wd=args['wd'])
+    model = DeepSetLinkage(in_dim=feature_dim, lr=args['lr'], 
+            linear=args['linear'], wd=args['wd'], feature_dim=args['feature_dim'])
 
 
 
@@ -53,7 +56,7 @@ def train(args, seed=0):
 
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
-            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
 
             loss = hac.train_epoch()
             #print(tb, 'train loss:', loss)
@@ -67,7 +70,7 @@ def train(args, seed=0):
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
-            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
             
             loss = hac.validate()
             #print(vb, 'val loss:', loss)
@@ -110,7 +113,7 @@ def train(args, seed=0):
         pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
         pairs = process_pair_features(pair_features)
         gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
-        hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+        hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
 
         links, f1s = hac.cluster()
         link_list.append(links)
@@ -131,11 +134,12 @@ def train(args, seed=0):
         pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(teb), delimiter=',', dtype=np.float)
         pairs = process_pair_features(pair_features)
         gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(teb), delimiter='\t', dtype=np.float)[:,1]
-        hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu)
+        hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
 
-        f1 = hac.get_test_f1(best_thresh)
+        f1, log = hac.get_test_f1(best_thresh)
         print('test f1 on {}: {}'.format(teb, f1))
         test_f1s.append(f1)
+        np.savetxt(args['path']+'/log_' + teb + '_' +str(seed) + '.csv', log, delimiter=',')
 
     print('test f1:', np.mean(test_f1s))
     np.save(args['path']+'/test_f1_'+str(seed), np.mean(test_f1s))

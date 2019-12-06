@@ -10,7 +10,7 @@ from copy import deepcopy
 
 
 class HAC():
-    def __init__(self, pairs, gt_clusters, model, margin, use_gpu=False):
+    def __init__(self, pairs, gt_clusters, model, margin, feature_dim=14, use_gpu=False):
         self.device = torch.device('cpu')
         if use_gpu:
             if torch.cuda.is_available():
@@ -20,8 +20,9 @@ class HAC():
                 # print('use_gpu is True but GPU is not available, using CPU')
 
         self.pairs = pairs
-        # self.pair_dim = pairs[list(self.pairs.keys())[0]].shape[0]
         self.pair_dim = pairs.shape[2]
+        self.feature_dim = feature_dim
+
         self.n_points = len(gt_clusters)
 
         self.gt_clusters = gt_clusters
@@ -41,9 +42,9 @@ class HAC():
 
     def set_feature_tensor(self):
         # feature_tensor = {}
-        feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.pair_dim))).to(self.device)
+        feature_tensor = torch.FloatTensor(np.zeros((self.n_points, self.n_points, self.feature_dim))).to(self.device)
 
-        for i in range(self.n_points):
+        for i in range(self.n_points-1):
             idxs = np.arange(i+1,self.n_points)
             curr_pairs = self.pairs[i,idxs,:].to(self.device)
             feature_tensor[i,idxs,:] = self.model.featurize(curr_pairs)
@@ -64,37 +65,11 @@ class HAC():
             idxs = np.arange(i+1,self.n_points)
             linkage_matrix[i,idxs] = self.model.score_batch(self.feature_tensor[i,idxs,:].unsqueeze(1)).squeeze()
 
-        # for j in range(self.n_points):
-        #     for i in range(j):
-        #         # i < j
-        #         linkage_matrix[i,j] = self.model.score(self.feature_tensor[i,j].unsqueeze(0)).squeeze()
-        #         # print('og:', linkage_matrix[i,j])
-        #         # print('new:', linkage_matrix2[i,j])
-        #         assert(torch.abs(linkage_matrix[i,j] - linkage_matrix2[i,j]) < 1e-7)
-
+        
         self.linkage_matrix = linkage_matrix
         self.pure_mask = pure_mask
 
     def update_linkage_matrix(self, i, j):
-        # recompute linkages for new cluster i
-        # for cid in self.active_clusters:
-        #     if cid == i : continue # don't compute linkage with self
-        #     x,y = min(i,cid), max(i,cid)
-        #     pair_features = self.get_pair_features_for_cluster_pair(x,y)
-        #     self.linkage_matrix[x,y] = self.model.score(pair_features).squeeze()
-        #     self.pure_mask[x,y] = self.check_cluster_pair_pure(self.cluster_idxs[x], self.cluster_idxs[y])
-
-        #     # set all linkages to infinite for old cluster j
-        #     # for cid in self.active_clusters:
-        #     x,y = min(j,cid), max(j,cid)
-        #     self.linkage_matrix[x,y] = np.inf
-        #     self.pure_mask[x,y] = 0
-
-        # self.linkage_matrix[min(i,j), max(i,j)] = np.inf
-        # self.pure_mask[min(i,j), max(i,j)] = 0
-
-
-
         feature_list = []
         idxs = np.array([x for x in self.active_clusters if x != i])
         min_idxs = np.minimum(idxs,i)
@@ -149,30 +124,6 @@ class HAC():
             # print('no pure mergers left')
             return None, True, (0,1)
 
-        # cluster_pairs = list(itertools.combinations(self.active_clusters, 2))
-        # cluster_pair_linkages = torch.FloatTensor(np.zeros(len(cluster_pairs))).to(self.device)
-        # pure_mask = torch.zeros(len(cluster_pairs), dtype=torch.bool)
-
-        # min_pure_linkage = np.inf
-        # min_pure_cluster_pair = None
-        
-        # for cp_idx, (c1, c2) in enumerate(cluster_pairs):
-        #     left_idxs = self.cluster_idxs[c1]
-        #     right_idxs = self.cluster_idxs[c2]
-        #     pure_flag = self.check_cluster_pair_pure(left_idxs, right_idxs)
-        #     pure_mask[cp_idx] = pure_flag
-        #     a,b = min(c1,c2), max(c1,c2)   
-        #     cluster_pair_linkages[cp_idx] = self.linkage_matrix[a,b]
-
-        #     if pure_flag:
-        #         if self.linkage_matrix[a,b] < min_pure_linkage:
-        #             min_pure_linkage = self.linkage_matrix[a,b]
-        #             min_pure_cluster_pair = (a,b)
-
-        # dirty_cluster_linkages = cluster_pair_linkages[pure_mask==0]
-
-        
-
         active = self.linkage_matrix < np.inf
         inactive = ~active
         impure_or_inactive = ~self.pure_mask
@@ -214,27 +165,12 @@ class HAC():
         left_idxs = self.cluster_idxs[c1]
         right_idxs = self.cluster_idxs[c2]
 
-        # do their cross product
-        
-        # cross_cluster_pairs = list(itertools.product(left_idxs, right_idxs))
-        # # get the features from self.pairs and put them in a big tensor
-        # point_pair_features = []
-        # for idx,(pid1, pid2) in enumerate(cross_cluster_pairs):
-        #     a,b = min(pid1, pid2), max(pid1,pid2)
-        #     # point_pair_features.append(self.pairs[(a,b)])
-        #     point_pair_features.append(self.feature_tensor[a,b])
-        # return torch.stack(point_pair_features)
-
-
+        # do their cross product using meshgrid
         cross_cluster_pairs = torch.LongTensor(np.meshgrid(left_idxs, right_idxs)).transpose(0,2).reshape(-1,2).to(self.device)
         mins = torch.min(cross_cluster_pairs, dim=1).values
         maxes = torch.max(cross_cluster_pairs, dim=1).values
         point_pair_features = self.feature_tensor[mins, maxes,:]
         return point_pair_features
-
-
-        
-
 
     def train_epoch(self):
         # self.reset()
@@ -346,16 +282,22 @@ class HAC():
 
             print(len(self.gt_clusters), 'data points')
 
+            log = []
+
             n_merges = 0
             while len(self.active_clusters) > 2:
                 min_link = torch.min(self.linkage_matrix).detach().cpu()
-                if min_link > thresh:
+     
+
+                if np.abs(min_link - thresh) < 1e-3:
                     break
 
                 n_merges += 1
                 merge_idx = int(torch.argmin(self.linkage_matrix).detach().cpu())
+                merge_link = float(torch.min(self.linkage_matrix).detach().cpu())
                 i,j = np.unravel_index(merge_idx, (self.n_points, self.n_points))
                 i,j = min(i,j), max(i,j)
+                log.append([i,j,merge_link])
 
                 # put stuff from j into i
                 self.cluster_idxs[i].extend(self.cluster_idxs[j])
@@ -368,11 +310,13 @@ class HAC():
                 #upate the linkage matrix with values for new cluster
                 self.update_linkage_matrix(i,j)
 
+
+
             print(n_merges, 'merged performed')
             preds = self.get_flat_clusters()
             f1= pairwise_f1(self.gt_clusters, preds)
 
-        return f1
+        return f1, np.array(log)
 
 
 

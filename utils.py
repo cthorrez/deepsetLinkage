@@ -17,7 +17,7 @@ def unequal_mean(arrays):
     return mu
 
 
-def find_thresh(link_list, f1_list, n=100000):
+def find_thresh(link_list, f1_list, n=1000000):
     n_lists = len(link_list)
     low = np.min([np.min(l) for l in link_list])
     high= np.max([np.max(l) for l in link_list])
@@ -30,11 +30,6 @@ def find_thresh(link_list, f1_list, n=100000):
     interp_mean = interpolated.mean(axis=0)
     best_thresh = x[np.argmax(interp_mean)]
     return best_thresh
-
-
-
-
-
 
 def process_pair_features(pair_features):
     n_points = np.max(pair_features[:,1]).astype(np.int) + 1
