@@ -1,0 +1,12 @@
+{
+    "path" : "test1",
+    "n_trials" : 8,
+    "n_epochs" : 50,
+    "patience" : 3,
+
+    "margin" : 2.0,
+    "lr" : 0.01,
+    "wd" : 0.01,
+    "linear" : true,
+    "use_gpu" : true
+}

@@ -1,0 +1,12 @@
+{
+    "path" : "netsmall_wd1e-3",
+    "n_trials" : 8,
+    "n_epochs" : 100,
+    "patience" : 3,
+
+    "margin" : 2.0,
+    "lr" : 0.01,
+    "wd" : 0.001,
+    "linear" : false,
+    "use_gpu" : true
+}

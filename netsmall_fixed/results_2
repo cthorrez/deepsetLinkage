@@ -1,0 +1,108 @@
+nonlinear
+epoch: 0 train loss: 3.989729404449463
+epoch: 0 val loss: 3.981839702903681
+epoch: 1 train loss: 3.904473145802816
+epoch: 1 val loss: 3.8944499845729945
+epoch: 2 train loss: 3.8050593535105386
+epoch: 2 val loss: 3.7808358169530383
+epoch: 3 train loss: 3.674959182739258
+epoch: 3 val loss: 3.6374042608467327
+epoch: 4 train loss: 3.507077932357788
+epoch: 4 val loss: 3.4596295519712648
+epoch: 5 train loss: 3.2946409384409585
+epoch: 5 val loss: 3.2333675160720117
+epoch: 6 train loss: 3.0264177322387695
+epoch: 6 val loss: 2.9479396463724434
+epoch: 7 train loss: 2.7040672302246094
+epoch: 7 val loss: 2.6080849420313217
+epoch: 8 train loss: 2.358753204345703
+epoch: 8 val loss: 2.300278544203743
+epoch: 9 train loss: 2.0568228562672934
+epoch: 9 val loss: 2.0239083415827874
+epoch: 10 train loss: 1.7448725700378418
+epoch: 10 val loss: 1.7138631505569153
+epoch: 11 train loss: 1.431339701016744
+epoch: 11 val loss: 1.441817144032293
+epoch: 12 train loss: 1.1728360454241435
+epoch: 12 val loss: 1.285815929628248
+epoch: 13 train loss: 0.9767732421557108
+epoch: 13 val loss: 1.2039893824428123
+epoch: 14 train loss: 0.8822853565216064
+epoch: 14 val loss: 1.1738565773436955
+epoch: 15 train loss: 0.8533444801966349
+epoch: 15 val loss: 1.1137992062720887
+epoch: 16 train loss: 0.8147202134132385
+epoch: 16 val loss: 1.0203696447575052
+epoch: 17 train loss: 0.7726813356081644
+epoch: 17 val loss: 0.9778820335627367
+epoch: 18 train loss: 0.754157304763794
+epoch: 18 val loss: 0.9465661403547907
+epoch: 19 train loss: 0.7363671263058981
+epoch: 19 val loss: 0.921201174677517
+epoch: 20 train loss: 0.7128881812095642
+epoch: 20 val loss: 0.9003168486086489
+epoch: 21 train loss: 0.6956444183985392
+epoch: 21 val loss: 0.8888647817245006
+epoch: 22 train loss: 0.6791689594586691
+epoch: 22 val loss: 0.8635500109945089
+epoch: 23 train loss: 0.6590860883394877
+epoch: 23 val loss: 0.8400168451970534
+epoch: 24 train loss: 0.6460113128026327
+epoch: 24 val loss: 0.8221489173709704
+epoch: 25 train loss: 0.6293985446294149
+epoch: 25 val loss: 0.810149356495981
+epoch: 26 train loss: 0.6126112540562948
+epoch: 26 val loss: 0.7964084057851872
+epoch: 27 train loss: 0.6040291984875997
+epoch: 27 val loss: 0.7858566324710352
+epoch: 28 train loss: 0.5952295859654745
+epoch: 28 val loss: 0.7758048131117519
+epoch: 29 train loss: 0.5891700387001038
+epoch: 29 val loss: 0.7675431617678397
+epoch: 30 train loss: 0.5816945433616638
+epoch: 30 val loss: 0.7599721883239214
+epoch: 31 train loss: 0.5784184237321218
+epoch: 31 val loss: 0.7538690557278995
+epoch: 32 train loss: 0.5742076536019644
+epoch: 32 val loss: 0.747816531458297
+epoch: 33 train loss: 0.5709598362445831
+epoch: 33 val loss: 0.7347111603246682
+epoch: 34 train loss: 0.5693073272705078
+epoch: 34 val loss: 0.7307465059286125
+epoch: 35 train loss: 0.5662632783253988
+epoch: 35 val loss: 0.7290847587932361
+epoch: 36 train loss: 0.5652651389439901
+epoch: 36 val loss: 0.7264777419837107
+epoch: 37 train loss: 0.5632401009400686
+epoch: 37 val loss: 0.7262060420499696
+epoch: 38 train loss: 0.5621679524580637
+epoch: 38 val loss: 0.7264795353838305
+epoch: 39 train loss: 0.5595898528893789
+epoch: 39 val loss: 0.7253124743835829
+epoch: 40 train loss: 0.556028813123703
+epoch: 40 val loss: 0.714592437516796
+epoch: 41 train loss: 0.5539651612440745
+epoch: 41 val loss: 0.708702663205064
+epoch: 42 train loss: 0.555604894955953
+epoch: 42 val loss: 0.7074468027161436
+train loss went up, stopping now
+lee_l best f1: 0.7970660146699267 best link: -0.05675762891769409
+robinson_h best f1: 0.8737864077669902 best link: -1.228245735168457
+mcguire_j best f1: 1.0 best link: 1.3324389457702637
+moore_a best f1: 0.7426542318648301 best link: 1.4252033233642578
+jones_s best f1: 0.8946543345351937 best link: 0.7724443674087524
+best threshold: 0.6758337106419461
+222 data points
+185 merged performed
+test f1 on young_s: 0.5952080706179066
+201 data points
+165 merged performed
+test f1 on blum_a: 0.5592350746268656
+72 data points
+37 merged performed
+test f1 on allen_d: 0.20320855614973263
+test f1: 0.4525505671315016
+
+real	72m56.823s
+user	73m18.932s
+sys	3m32.248s

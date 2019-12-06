@@ -1,0 +1,12 @@
+{
+    "path" : "linear_m1",
+    "n_trials" : 12,
+    "n_epochs" : 100,
+    "patience" : 3,
+
+    "margin" : 1.0,
+    "lr" : 0.01,
+    "wd" : 0.01,
+    "linear" : true,
+    "use_gpu" : true
+}

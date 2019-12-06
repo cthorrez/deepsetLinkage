@@ -1,0 +1,14 @@
+{
+    "path" : "fd_lin",
+    "n_trials" : 8,
+    "n_epochs" : 100,
+    "patience" : 3,
+
+    "feature_dim" : 1,
+
+    "margin" : 2,
+    "lr" : 0.01,
+    "wd" : 0.01,
+    "linear" : true,
+    "use_gpu" : true
+}

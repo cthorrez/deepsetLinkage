@@ -1,0 +1,107 @@
+epoch: 0 train loss: 5.992580413818359
+epoch: 0 val loss: 5.245147546642931
+epoch: 1 train loss: 5.6879502932230634
+epoch: 1 val loss: 4.9629901234269855
+epoch: 2 train loss: 5.363271077473958
+epoch: 2 val loss: 4.644940278013743
+epoch: 3 train loss: 4.994387149810791
+epoch: 3 val loss: 4.261849951451421
+epoch: 4 train loss: 4.561083475748698
+epoch: 4 val loss: 3.803335761558925
+epoch: 5 train loss: 4.049027840296428
+epoch: 5 val loss: 3.2737265454441618
+epoch: 6 train loss: 3.4494574069976807
+epoch: 6 val loss: 2.77670285146027
+epoch: 7 train loss: 2.9082490603129068
+epoch: 7 val loss: 2.4664744657161
+epoch: 8 train loss: 2.494171619415283
+epoch: 8 val loss: 2.2766517941118
+epoch: 9 train loss: 2.1662190357844033
+epoch: 9 val loss: 2.208162839807452
+epoch: 10 train loss: 1.9559186299641926
+epoch: 10 val loss: 2.0821678879746504
+epoch: 11 train loss: 1.80439293384552
+epoch: 11 val loss: 1.9900925797302085
+epoch: 12 train loss: 1.6853239138921101
+epoch: 12 val loss: 1.9001033591520118
+epoch: 13 train loss: 1.5763252178827922
+epoch: 13 val loss: 1.8207648428676237
+epoch: 14 train loss: 1.4770131508509319
+epoch: 14 val loss: 1.749195211473395
+epoch: 15 train loss: 1.4049153327941895
+epoch: 15 val loss: 1.6962387817081082
+epoch: 16 train loss: 1.3676059246063232
+epoch: 16 val loss: 1.6467404739511546
+epoch: 17 train loss: 1.3343054453531902
+epoch: 17 val loss: 1.602756018177756
+epoch: 18 train loss: 1.29800812403361
+epoch: 18 val loss: 1.567903055008389
+epoch: 19 train loss: 1.2617100874582927
+epoch: 19 val loss: 1.5270162677925856
+epoch: 20 train loss: 1.22527414560318
+epoch: 20 val loss: 1.4922816024202015
+epoch: 21 train loss: 1.1882609526316326
+epoch: 21 val loss: 1.4556644564385761
+epoch: 22 train loss: 1.1710857550303142
+epoch: 22 val loss: 1.415461370609477
+epoch: 23 train loss: 1.1283889611562092
+epoch: 23 val loss: 1.3759479963065688
+epoch: 24 train loss: 1.0819984475771587
+epoch: 24 val loss: 1.3292150703101813
+epoch: 25 train loss: 1.034464697043101
+epoch: 25 val loss: 1.2826964311082216
+epoch: 26 train loss: 0.9787318905194601
+epoch: 26 val loss: 1.2268332679424205
+epoch: 27 train loss: 0.9220128258069357
+epoch: 27 val loss: 1.1835000779075304
+epoch: 28 train loss: 0.8676170309384664
+epoch: 28 val loss: 1.1454717207454101
+epoch: 29 train loss: 0.8223378658294678
+epoch: 29 val loss: 1.1196870328166482
+epoch: 30 train loss: 0.7891863385836283
+epoch: 30 val loss: 1.0980333683976728
+epoch: 31 train loss: 0.7579881946245829
+epoch: 31 val loss: 1.0912557625138102
+epoch: 32 train loss: 0.7441394726435343
+epoch: 32 val loss: 1.0717496570724074
+epoch: 33 train loss: 0.7291365265846252
+epoch: 33 val loss: 1.0465657817318719
+epoch: 34 train loss: 0.7110898097356161
+epoch: 34 val loss: 1.0224488121739386
+epoch: 35 train loss: 0.7014949917793274
+epoch: 35 val loss: 1.0010146100006985
+epoch: 36 train loss: 0.6934444109598795
+epoch: 36 val loss: 0.9982177177565026
+epoch: 37 train loss: 0.6886496444543203
+epoch: 37 val loss: 0.9828400837138612
+epoch: 38 train loss: 0.6851150194803873
+epoch: 38 val loss: 0.970629630583723
+epoch: 39 train loss: 0.6817737718423208
+epoch: 39 val loss: 0.9697094348805464
+epoch: 40 train loss: 0.6807780166467031
+epoch: 40 val loss: 0.9741434336277675
+epoch: 41 train loss: 0.6801597078641256
+epoch: 41 val loss: 0.9748366727624282
+epoch: 42 train loss: 0.6793543497721354
+epoch: 42 val loss: 0.9749980508864529
+val loss hasn't improved in 3 epochs, stopping now
+blum_a best f1: 0.9845418326693227 best link: 3.5572352409362793
+young_s best f1: 0.7419424243728215 best link: 3.5582995414733887
+lee_l best f1: 0.7490320309750087 best link: 2.483887195587158
+jones_s best f1: 0.8844761289960424 best link: 2.291771650314331
+mcguire_j best f1: 1.0 best link: 2.160740613937378
+best threshold: 3.007723278521965
+31 data points
+22 merged performed
+test f1 on robinson_h: 0.7007299270072991
+72 data points
+58 merged performed
+test f1 on allen_d: 0.13399503722084366
+227 data points
+210 merged performed
+test f1 on moore_a: 0.8038504364067383
+test f1: 0.5461918002116269
+
+real	91m33.904s
+user	87m36.691s
+sys	4m21.917s

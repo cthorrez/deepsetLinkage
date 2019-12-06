@@ -1,0 +1,63 @@
+epoch: 0 train loss: 1.7082219521204631
+epoch: 0 val loss: 1.6295783388704512
+epoch: 1 train loss: 1.3938087622324626
+epoch: 1 val loss: 1.3765813140125047
+epoch: 2 train loss: 1.0984690189361572
+epoch: 2 val loss: 1.1750458531932102
+epoch: 3 train loss: 0.9125478068987528
+epoch: 3 val loss: 1.0739791349100707
+epoch: 4 train loss: 0.7613624731699625
+epoch: 4 val loss: 0.9867766778448119
+epoch: 5 train loss: 0.6568733255068461
+epoch: 5 val loss: 0.920369893173391
+epoch: 6 train loss: 0.5712889035542806
+epoch: 6 val loss: 0.867815689958648
+epoch: 7 train loss: 0.5281270543734232
+epoch: 7 val loss: 0.8164404832623626
+epoch: 8 train loss: 0.5071702897548676
+epoch: 8 val loss: 0.7511326588733069
+epoch: 9 train loss: 0.483835369348526
+epoch: 9 val loss: 0.6972943160519784
+epoch: 10 train loss: 0.46277395884195965
+epoch: 10 val loss: 0.6705648239865118
+epoch: 11 train loss: 0.44402721524238586
+epoch: 11 val loss: 0.6541309418599338
+epoch: 12 train loss: 0.419779767592748
+epoch: 12 val loss: 0.6452153063695463
+epoch: 13 train loss: 0.3924415906270345
+epoch: 13 val loss: 0.6452839544092419
+epoch: 14 train loss: 0.37443141142527264
+epoch: 14 val loss: 0.6463271923956901
+epoch: 15 train loss: 0.34590375423431396
+epoch: 15 val loss: 0.6442824176326127
+epoch: 16 train loss: 0.3224310080210368
+epoch: 16 val loss: 0.6384822326228932
+epoch: 17 train loss: 0.3040338655312856
+epoch: 17 val loss: 0.6342075586222695
+epoch: 18 train loss: 0.28994930783907574
+epoch: 18 val loss: 0.6390370018165143
+epoch: 19 train loss: 0.27963194747765857
+epoch: 19 val loss: 0.6463548403864423
+epoch: 20 train loss: 0.26979024211565655
+epoch: 20 val loss: 0.653325350566019
+val loss hasn't improved in 3 epochs, stopping now
+moore_a best f1: 0.6994348904337928 best link: 0.9582257866859436
+allen_d best f1: 0.5151515151515151 best link: -1.1151165962219238
+young_s best f1: 0.6258482653450248 best link: -0.9597002863883972
+lee_l best f1: 0.7432368296155671 best link: -0.897544801235199
+mcguire_j best f1: 0.9850746268656716 best link: 1.1443166732788086
+best threshold: 0.05774619123239688
+201 data points
+168 merged performed
+test f1 on blum_a: 0.45111965240641716
+471 data points
+406 merged performed
+test f1 on jones_s: 0.6854467608339002
+31 data points
+17 merged performed
+test f1 on robinson_h: 0.8256880733944955
+test f1: 0.6540848288782709
+
+real	18m10.544s
+user	18m0.885s
+sys	0m16.349s

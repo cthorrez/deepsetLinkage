@@ -1,0 +1,12 @@
+{
+    "path" : "netsmall_fixed",
+    "n_trials" : 8,
+    "n_epochs" : 100,
+    "patience" : 3,
+
+    "margin" : 2.0,
+    "lr" : 0.01,
+    "wd" : 0.01,
+    "linear" : false,
+    "use_gpu" : true
+}

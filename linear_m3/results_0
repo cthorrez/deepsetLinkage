@@ -1,0 +1,105 @@
+epoch: 0 train loss: 5.714975039164226
+epoch: 0 val loss: 5.601802298363219
+epoch: 1 train loss: 5.40135924021403
+epoch: 1 val loss: 5.289447935337716
+epoch: 2 train loss: 5.0247368812561035
+epoch: 2 val loss: 4.902546951074028
+epoch: 3 train loss: 4.617379188537598
+epoch: 3 val loss: 4.48145580690853
+epoch: 4 train loss: 4.179963906606038
+epoch: 4 val loss: 4.048661729234629
+epoch: 5 train loss: 3.7017635504404702
+epoch: 5 val loss: 3.5823161874306813
+epoch: 6 train loss: 3.2006314595540366
+epoch: 6 val loss: 3.106277425089228
+epoch: 7 train loss: 2.7617832024892173
+epoch: 7 val loss: 2.6073754570809413
+epoch: 8 train loss: 2.3999644915262857
+epoch: 8 val loss: 2.267532874295052
+epoch: 9 train loss: 2.1779308716456094
+epoch: 9 val loss: 2.068744899353038
+epoch: 10 train loss: 1.9589895407358806
+epoch: 10 val loss: 1.9626391738541282
+epoch: 11 train loss: 1.7849359512329102
+epoch: 11 val loss: 1.904594089178478
+epoch: 12 train loss: 1.6346171696980794
+epoch: 12 val loss: 1.8404850704042945
+epoch: 13 train loss: 1.5442431370417278
+epoch: 13 val loss: 1.762653871769265
+epoch: 14 train loss: 1.4842927853266399
+epoch: 14 val loss: 1.6478478645297403
+epoch: 15 train loss: 1.411439339319865
+epoch: 15 val loss: 1.5329649777563104
+epoch: 16 train loss: 1.3446475664774578
+epoch: 16 val loss: 1.4085561959947155
+epoch: 17 train loss: 1.2814034620920818
+epoch: 17 val loss: 1.2939382066416352
+epoch: 18 train loss: 1.2311028440793355
+epoch: 18 val loss: 1.237836347685402
+epoch: 19 train loss: 1.205783446629842
+epoch: 19 val loss: 1.2226044810581043
+epoch: 20 train loss: 1.1825875441233318
+epoch: 20 val loss: 1.206892587808666
+epoch: 21 train loss: 1.1515427827835083
+epoch: 21 val loss: 1.1785003352159626
+epoch: 22 train loss: 1.1201520363489788
+epoch: 22 val loss: 1.1448390466138925
+epoch: 23 train loss: 1.0911695559819539
+epoch: 23 val loss: 1.120630598688808
+epoch: 24 train loss: 1.07851638396581
+epoch: 24 val loss: 1.1160458950477377
+epoch: 25 train loss: 1.0779378414154053
+epoch: 25 val loss: 1.1040559415151836
+epoch: 26 train loss: 1.053633213043213
+epoch: 26 val loss: 1.0857602158568342
+epoch: 27 train loss: 1.0451456507047017
+epoch: 27 val loss: 1.0709312790317067
+epoch: 28 train loss: 1.0402415593465169
+epoch: 28 val loss: 1.0596071118407315
+epoch: 29 train loss: 1.0347907741864522
+epoch: 29 val loss: 1.0517151020793651
+epoch: 30 train loss: 1.0306058327356975
+epoch: 30 val loss: 1.0465307765860619
+epoch: 31 train loss: 1.0283103187878926
+epoch: 31 val loss: 1.041655333512212
+epoch: 32 train loss: 1.024682621161143
+epoch: 32 val loss: 1.0372776863129065
+epoch: 33 train loss: 1.020010729630788
+epoch: 33 val loss: 1.0338008766888975
+epoch: 34 train loss: 1.0130800406138103
+epoch: 34 val loss: 1.030378153235261
+epoch: 35 train loss: 1.011569857597351
+epoch: 35 val loss: 1.029425637076174
+epoch: 36 train loss: 1.0106928149859111
+epoch: 36 val loss: 1.027776577590367
+epoch: 37 train loss: 1.0089741349220276
+epoch: 37 val loss: 1.0241430881380735
+epoch: 38 train loss: 1.0027843316396077
+epoch: 38 val loss: 1.0210472100294279
+epoch: 39 train loss: 1.0024109085400899
+epoch: 39 val loss: 1.0204092058515146
+epoch: 40 train loss: 1.0022037227948506
+epoch: 40 val loss: 1.025169450780365
+epoch: 41 train loss: 1.0057250459988911
+epoch: 41 val loss: 1.0249952275040228
+train loss went up, stopping now
+young_s best f1: 0.6388289877801737 best link: 2.75555419921875
+robinson_h best f1: 0.8737864077669902 best link: -1.377042293548584
+jones_s best f1: 0.8988402765854496 best link: 1.6753556728363037
+lee_l best f1: 0.7390490453013852 best link: 2.342954158782959
+moore_a best f1: 0.5880407531871766 best link: -2.003345251083374
+best threshold: 1.7610950805572045
+72 data points
+40 merged performed
+test f1 on allen_d: 0.2784810126582279
+201 data points
+171 merged performed
+test f1 on blum_a: 0.5108263367211665
+19 data points
+10 merged performed
+test f1 on mcguire_j: 0.8214285714285715
+test f1: 0.5369119736026553
+
+real	77m44.732s
+user	78m13.101s
+sys	4m17.315s

@@ -1,0 +1,57 @@
+epoch: 0 train loss: 5.822200457255046
+epoch: 0 val loss: 5.591961383358422
+epoch: 1 train loss: 5.622614701588948
+epoch: 1 val loss: 5.36617600744882
+epoch: 2 train loss: 5.396933555603027
+epoch: 2 val loss: 5.093329481622006
+epoch: 3 train loss: 5.130749702453613
+epoch: 3 val loss: 4.7481474704622535
+epoch: 4 train loss: 4.803723971048991
+epoch: 4 val loss: 4.310777983017539
+epoch: 5 train loss: 4.389999230702718
+epoch: 5 val loss: 3.7725645693980976
+epoch: 6 train loss: 3.960358460744222
+epoch: 6 val loss: 3.3123561533553456
+epoch: 7 train loss: 3.622563123703003
+epoch: 7 val loss: 2.9789092163168025
+epoch: 8 train loss: 3.3192594051361084
+epoch: 8 val loss: 2.6570059303158255
+epoch: 9 train loss: 3.0185908476511636
+epoch: 9 val loss: 2.326288985992769
+epoch: 10 train loss: 2.7315303484598794
+epoch: 10 val loss: 2.019534317016371
+epoch: 11 train loss: 2.5270214080810547
+epoch: 11 val loss: 1.856026423824825
+epoch: 12 train loss: 2.4035287300745645
+epoch: 12 val loss: 1.7369975671172142
+epoch: 13 train loss: 2.28661839167277
+epoch: 13 val loss: 1.6183632222982394
+epoch: 14 train loss: 2.167328357696533
+epoch: 14 val loss: 1.5164941504050038
+epoch: 15 train loss: 2.060773173967997
+epoch: 15 val loss: 1.5801585673478862
+epoch: 16 train loss: 1.959973136583964
+epoch: 16 val loss: 1.6901701158146794
+epoch: 17 train loss: 1.899395744005839
+epoch: 17 val loss: 1.7126045271437218
+val loss hasn't improved in 3 epochs, stopping now
+young_s best f1: 0.6271790304109937 best link: 0.34853777289390564
+mcguire_j best f1: 0.6296296296296297 best link: -0.17134696245193481
+allen_d best f1: 0.5 best link: -3.076578378677368
+blum_a best f1: 0.9742888690257111 best link: 4.505847930908203
+jones_s best f1: 0.7563851237817857 best link: 1.7868107557296753
+best threshold: 0.10946420831720083
+31 data points
+23 merged performed
+test f1 on robinson_h: 0.5
+227 data points
+207 merged performed
+test f1 on moore_a: 0.5915321352421566
+216 data points
+169 merged performed
+test f1 on lee_l: 0.5480769230769231
+test f1: 0.5465363527730266
+
+real	40m1.314s
+user	38m25.173s
+sys	1m42.244s

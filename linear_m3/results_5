@@ -1,0 +1,87 @@
+epoch: 0 train loss: 5.649046421051025
+epoch: 0 val loss: 5.564820966571677
+epoch: 1 train loss: 5.297859191894531
+epoch: 1 val loss: 5.277729444382265
+epoch: 2 train loss: 4.899336020151774
+epoch: 2 val loss: 4.943023596148823
+epoch: 3 train loss: 4.424565156300862
+epoch: 3 val loss: 4.551546944531278
+epoch: 4 train loss: 3.862630764643351
+epoch: 4 val loss: 4.10569155363838
+epoch: 5 train loss: 3.3904220263163247
+epoch: 5 val loss: 3.8183621598804756
+epoch: 6 train loss: 3.081369082132975
+epoch: 6 val loss: 3.594135101138476
+epoch: 7 train loss: 2.7632640997568765
+epoch: 7 val loss: 3.391292916577408
+epoch: 8 train loss: 2.4673522313435874
+epoch: 8 val loss: 3.1765741484463
+epoch: 9 train loss: 2.18561053276062
+epoch: 9 val loss: 3.0314546091066195
+epoch: 10 train loss: 2.0112412373224893
+epoch: 10 val loss: 2.8993131336618996
+epoch: 11 train loss: 1.8494961659113567
+epoch: 11 val loss: 2.758591060341474
+epoch: 12 train loss: 1.6994438966115315
+epoch: 12 val loss: 2.6170726574032064
+epoch: 13 train loss: 1.5753878355026245
+epoch: 13 val loss: 2.4931596737496733
+epoch: 14 train loss: 1.5267691612243652
+epoch: 14 val loss: 2.371224849902719
+epoch: 15 train loss: 1.485063076019287
+epoch: 15 val loss: 2.254746327469525
+epoch: 16 train loss: 1.4482135375340779
+epoch: 16 val loss: 2.1536747650413828
+epoch: 17 train loss: 1.3968477646509807
+epoch: 17 val loss: 2.0992612992249544
+epoch: 18 train loss: 1.3552284240722656
+epoch: 18 val loss: 2.0691626230729456
+epoch: 19 train loss: 1.3113437096277873
+epoch: 19 val loss: 2.064642461122409
+epoch: 20 train loss: 1.25966215133667
+epoch: 20 val loss: 2.061861453712928
+epoch: 21 train loss: 1.2131749391555786
+epoch: 21 val loss: 2.0610574533452852
+epoch: 22 train loss: 1.1679813265800476
+epoch: 22 val loss: 2.04301122838079
+epoch: 23 train loss: 1.1412755846977234
+epoch: 23 val loss: 2.0181924094528236
+epoch: 24 train loss: 1.0794317324956257
+epoch: 24 val loss: 1.9815083588690783
+epoch: 25 train loss: 1.0164474646250408
+epoch: 25 val loss: 1.9512217991583567
+epoch: 26 train loss: 0.9555729031562805
+epoch: 26 val loss: 1.9337462640881582
+epoch: 27 train loss: 0.9076228936513265
+epoch: 27 val loss: 1.940695397692217
+epoch: 28 train loss: 0.880272626876831
+epoch: 28 val loss: 1.9431663419508456
+epoch: 29 train loss: 0.8467541933059692
+epoch: 29 val loss: 1.929546915500158
+epoch: 30 train loss: 0.8242290616035461
+epoch: 30 val loss: 1.9306660773792843
+epoch: 31 train loss: 0.8020875056584676
+epoch: 31 val loss: 1.9348379329424579
+epoch: 32 train loss: 0.7874526977539062
+epoch: 32 val loss: 1.9486013668303812
+val loss hasn't improved in 3 epochs, stopping now
+moore_a best f1: 0.7011397720455909 best link: 2.2877795696258545
+allen_d best f1: 0.5151515151515151 best link: -3.271862030029297
+young_s best f1: 0.6258482653450248 best link: -2.7900421619415283
+lee_l best f1: 0.7437470504955168 best link: -2.0642428398132324
+mcguire_j best f1: 0.9850746268656716 best link: 3.00917387008667
+best threshold: 1.0675784006222635
+201 data points
+173 merged performed
+test f1 on blum_a: 0.5089885381057712
+471 data points
+415 merged performed
+test f1 on jones_s: 0.677922124082532
+31 data points
+18 merged performed
+test f1 on robinson_h: 0.8181818181818182
+test f1: 0.6683641601233737
+
+real	26m59.102s
+user	26m42.014s
+sys	0m24.381s

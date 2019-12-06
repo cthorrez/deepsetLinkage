@@ -1,0 +1,59 @@
+epoch: 0 train loss: 1.8867607911427815
+epoch: 0 val loss: 1.7302017904721296
+epoch: 1 train loss: 1.5527102152506511
+epoch: 1 val loss: 1.5255880002013016
+epoch: 2 train loss: 1.2808201313018799
+epoch: 2 val loss: 1.3003472398326854
+epoch: 3 train loss: 1.023639400800069
+epoch: 3 val loss: 1.0710980969052466
+epoch: 4 train loss: 0.8259984850883484
+epoch: 4 val loss: 0.924566001732112
+epoch: 5 train loss: 0.7168744206428528
+epoch: 5 val loss: 0.8208398407467602
+epoch: 6 train loss: 0.6307409803072611
+epoch: 6 val loss: 0.7212099749138001
+epoch: 7 train loss: 0.5516462425390879
+epoch: 7 val loss: 0.6432303592514295
+epoch: 8 train loss: 0.4827183286348979
+epoch: 8 val loss: 0.6494234754290018
+epoch: 9 train loss: 0.4498958885669708
+epoch: 9 val loss: 0.6467028279811639
+epoch: 10 train loss: 0.41801246007283527
+epoch: 10 val loss: 0.6269655385314021
+epoch: 11 train loss: 0.3996751010417938
+epoch: 11 val loss: 0.6045564250418484
+epoch: 12 train loss: 0.3870572050412496
+epoch: 12 val loss: 0.5824234516455282
+epoch: 13 train loss: 0.37489603956540424
+epoch: 13 val loss: 0.5646132980775718
+epoch: 14 train loss: 0.36015299956003827
+epoch: 14 val loss: 0.553731999694656
+epoch: 15 train loss: 0.3548363347848256
+epoch: 15 val loss: 0.5423538367476309
+epoch: 16 train loss: 0.3493751684824626
+epoch: 16 val loss: 0.5244715898411959
+epoch: 17 train loss: 0.3438567916552226
+epoch: 17 val loss: 0.5175355810303817
+epoch: 18 train loss: 0.345356951157252
+epoch: 18 val loss: 0.5167251731622508
+train loss went up, stopping now
+jones_s best f1: 0.8404800361242812 best link: 0.2509234547615051
+allen_d best f1: 0.48484848484848486 best link: -1.5764057636260986
+young_s best f1: 0.6272415108737124 best link: 0.8814855217933655
+lee_l best f1: 0.7973366625052019 best link: -0.040225833654403687
+moore_a best f1: 0.5992049150704734 best link: 0.3988535404205322
+best threshold: 0.2509840881384964
+19 data points
+10 merged performed
+test f1 on mcguire_j: 0.8214285714285715
+31 data points
+18 merged performed
+test f1 on robinson_h: 0.8181818181818182
+201 data points
+182 merged performed
+test f1 on blum_a: 0.5176301271288078
+test f1: 0.7190801722463992
+
+real	27m24.131s
+user	29m27.408s
+sys	0m33.349s
