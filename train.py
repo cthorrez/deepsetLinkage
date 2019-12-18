@@ -23,8 +23,8 @@ def train(args, seed=0):
     val_blocks = list(blocks[idxs[3:5]])
     test_blocks = list(blocks[idxs[5:8]])
 
-    # train_blocks = ['robinson_h', 'mcguire_j']
-    # val_blocks = ['robinson_h']
+    train_blocks = ['robinson_h']
+    val_blocks = ['robinson_h']
     # test_blocks = list(blocks)
 
     # print(train_blocks)
@@ -56,7 +56,8 @@ def train(args, seed=0):
 
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(tb), delimiter='\t', dtype=np.float)[:,1]
-            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, 
+                      feature_dim=args['feature_dim'], teacher_force=args['teacher_force'])
 
             loss = hac.train_epoch()
             #print(tb, 'train loss:', loss)
@@ -70,7 +71,8 @@ def train(args, seed=0):
             pair_features = np.loadtxt('data/rexa/{}/pairFeatures.csv'.format(vb), delimiter=',', dtype=np.float)
             pairs = process_pair_features(pair_features)
             gt_clusters = np.loadtxt('data/rexa/{}/gtClusters.tsv'.format(vb), delimiter='\t', dtype=np.float)[:,1]
-            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, feature_dim=args['feature_dim'])
+            hac = HAC(pairs, gt_clusters, model, margin=margin, use_gpu=use_gpu, 
+                      feature_dim=args['feature_dim'], teacher_force=args['teacher_force'])
             
             loss = hac.validate()
             #print(vb, 'val loss:', loss)

@@ -10,8 +10,10 @@ from copy import deepcopy
 
 
 class HAC():
-    def __init__(self, pairs, gt_clusters, model, margin, feature_dim=14, use_gpu=False):
+    def __init__(self, pairs, gt_clusters, model, margin, 
+                 feature_dim=14, use_gpu=False, teacher_force=1.0):
         self.device = torch.device('cpu')
+        self.teacher_force = teacher_force
         if use_gpu:
             if torch.cuda.is_available():
                 self.device = torch.device('cuda:0')
@@ -128,6 +130,8 @@ class HAC():
         impure_and_active = impure_or_inactive & active
         
         
+        min_idx = torch.argmin(self.linkage_matrix + 10000*inactive.type(torch.float))
+        min_cluster_pair = np.unravel_index(min_idx.detach().cpu().numpy(), (self.n_points, self.n_points))
 
         min_pure_idx = torch.argmin(self.linkage_matrix + 10000*impure_or_inactive.type(torch.float))
         min_pure_cluster_pair = np.unravel_index(min_pure_idx.detach().cpu().numpy(), (self.n_points, self.n_points))
@@ -147,7 +151,17 @@ class HAC():
         loss = (dirty_loss/n_impure) + min_pure_diff
 
 
-        return loss, self.pure_mask.sum()==0, min_pure_cluster_pair
+        # flip a coin to determine if to merge min pure or min overall
+        c = np.random.rand()
+        if c > self.teacher_force : 
+            # not teacher forcing
+            merge_pair = min_cluster_pair
+        else :
+            # teacher force
+            merge_pair = min_pure_cluster_pair
+
+
+        return loss, self.pure_mask.sum()==0, merge_pair
 
 
 
@@ -189,7 +203,7 @@ class HAC():
 
         # this line might be optional idk yet
         # trying not dividing
-        # epoch_loss = epoch_loss / iterations
+        epoch_loss = epoch_loss / iterations
 
         epoch_loss.backward()
         self.model.optimizer.step()
