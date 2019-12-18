@@ -26,10 +26,11 @@ class DeepSetLinkage():
             print('nonlinear')
             self.feature_fn = nn.Sequential(
                                     nn.Linear(in_dim, feature_dim),
+                                    nn.ReLU(),
+                                    nn.Linear(feature_dim, feature_dim)
                                 )
 
             self.scoring_fn = nn.Sequential(
-                                 nn.ReLU(),
                                  nn.Linear(feature_dim, 1),
                                 )
 

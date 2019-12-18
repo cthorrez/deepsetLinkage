@@ -1,18 +1,18 @@
 {
-    "path" : "linsanity_final",
+    "path" : "net_noforce",
     "n_trials" : 8,
-    "n_epochs" : 50,
+    "n_epochs" : 35,
     "patience" : 3,
 
     "feature_dim" : 14,
 
 
     "thresh" : "find",
-    "teacher_force" : 1.0,
+    "teacher_force" : 0.0,
 
     "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,
-    "linear" : true,
+    "linear" : false,
     "use_gpu" : true
 }
