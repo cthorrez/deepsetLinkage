@@ -1,5 +1,5 @@
 {
-    "path" : "simply_linear",
+    "path" : "lin_nthresh100",
     "n_trials" : 8,
     "n_epochs" : 25,
     "patience" : 3,
