@@ -1,5 +1,5 @@
 {
-    "path" : "lin_thresh0",
+    "path" : "net_thresh0",
     "n_trials" : 8,
     "n_epochs" : 25,
     "patience" : 3,
