@@ -1,14 +1,14 @@
 {
-    "path" : "lin_halfforce",
+    "path" : "simply_linear",
     "n_trials" : 8,
-    "n_epochs" : 35,
+    "n_epochs" : 25,
     "patience" : 3,
 
     "feature_dim" : 14,
 
 
     "thresh" : "find",
-    "teacher_force" : 0.5,
+    "teacher_force" : 1.0,
 
     "margin" : 2,
     "lr" : 0.01,

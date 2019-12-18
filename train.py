@@ -103,8 +103,10 @@ def train(args, seed=0):
         prev_train_loss = train_loss
 
 
+    print('saving results')
     np.save(args['path']+'/train_losses_'+str(seed), np.array(train_losses))
     np.save(args['path']+'/val_losses_'+str(seed), np.array(val_losses))
+    print('done saving results')
         
 
     # find f1 score

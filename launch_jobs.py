@@ -17,11 +17,11 @@ def main():
     # ['1080ti-long'] 
     # ['1080ti-short'] 
 
-    queues = 1*['1080ti-long'] + 1*['titanx-long'] + 3*['titanx-short'] + 3*['1080ti-short'] 
+    queues = 2*['1080ti-long'] + 2*['titanx-long'] + 2*['titanx-short'] + 2*['1080ti-short'] 
     for i, q in zip(np.arange(args['n_trials']), queues):
         # run trails with different seeds
         fname = path + '/results_' + str(i)
-        command = 'sbatch --partition={} --gres=gpu:1 --job-name=deepset --output={} --ntasks-per-node=1 --mem=25G run.sh {}'.format(q, fname, i)
+        command = 'sbatch --partition={} --gres=gpu:1 --job-name=deepset --output={} --ntasks-per-node=1 --mem=50G run.sh {}'.format(q, fname, i)
         os.system(command)
         time.sleep(1)
 
