@@ -1,15 +1,15 @@
 {
-    "path" : "net_thresh0",
+    "path" : "lin_not_divide_iters",
     "n_trials" : 8,
     "n_epochs" : 25,
     "patience" : 3,
 
     "feature_dim" : 14,
 
-    "thresh" : 0.0,
+    "thresh" : "find",
     "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,
-    "linear" : false,
+    "linear" : true,
     "use_gpu" : true
 }

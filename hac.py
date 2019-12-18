@@ -53,8 +53,6 @@ class HAC():
 
     def set_linkage_matrix(self):
         linkage_matrix = torch.FloatTensor(np.zeros((self.n_points, self.n_points)) + np.inf).to(self.device)
-        # linkage_matrix = {}
-
 
         gt_matrix = torch.LongTensor(self.gt_clusters).repeat(self.n_points,1).to(self.device)
         pure_mask = gt_matrix.t() == gt_matrix
@@ -131,7 +129,7 @@ class HAC():
         
         
 
-        min_pure_idx = torch.argmin(self.linkage_matrix + 1000*impure_or_inactive.type(torch.float))
+        min_pure_idx = torch.argmin(self.linkage_matrix + 10000*impure_or_inactive.type(torch.float))
         min_pure_cluster_pair = np.unravel_index(min_pure_idx.detach().cpu().numpy(), (self.n_points, self.n_points))
         min_pure_linkage = self.linkage_matrix[min_pure_cluster_pair[0], min_pure_cluster_pair[1]]
         dirty_cluster_linkages = self.linkage_matrix[impure_and_active]
@@ -190,7 +188,8 @@ class HAC():
         # print("we've got to go back!")
 
         # this line might be optional idk yet
-        epoch_loss = epoch_loss / iterations
+        # trying not dividing
+        # epoch_loss = epoch_loss / iterations
 
         epoch_loss.backward()
         self.model.optimizer.step()
