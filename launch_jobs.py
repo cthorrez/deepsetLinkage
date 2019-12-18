@@ -12,7 +12,12 @@ def main():
     os.mkdir(path)
     shutil.copy('config.json', path)
 
-    queues = 3*['1080ti-short'] + 2*['1080ti-long'] + 3*['titanx-short'] + 2*['titanx-long']
+    # ['titanx-long']
+    # ['titanx-short']
+    # ['1080ti-long'] 
+    # ['1080ti-short'] 
+
+    queues = 3*['1080ti-long'] + 3*['titanx-long'] + 2*['titanx-short'] + 2*['1080ti-short'] 
     for i, q in zip(np.arange(args['n_trials']), queues):
         # run trails with different seeds
         fname = path + '/results_' + str(i)
