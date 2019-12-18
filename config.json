@@ -1,10 +1,10 @@
 {
-    "path" : "net_scoReLU",
+    "path" : "squeeze5net_scoReLU",
     "n_trials" : 8,
-    "n_epochs" : 25,
+    "n_epochs" : 50,
     "patience" : 3,
 
-    "feature_dim" : 14,
+    "feature_dim" : 5,
 
 
     "thresh" : "find",
