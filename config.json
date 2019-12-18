@@ -1,5 +1,5 @@
 {
-    "path" : "net_noforce",
+    "path" : "lin_halfforce",
     "n_trials" : 8,
     "n_epochs" : 35,
     "patience" : 3,
@@ -8,11 +8,11 @@
 
 
     "thresh" : "find",
-    "teacher_force" : 0.0,
+    "teacher_force" : 0.5,
 
     "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,
-    "linear" : false,
+    "linear" : true,
     "use_gpu" : true
 }
