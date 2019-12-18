@@ -17,7 +17,7 @@ def unequal_mean(arrays):
     return mu
 
 
-def find_thresh(link_list, f1_list, n=100):
+def find_thresh(link_list, f1_list, n=100000):
     n_lists = len(link_list)
     low = np.min([np.min(l) for l in link_list])
     high= np.max([np.max(l) for l in link_list])
