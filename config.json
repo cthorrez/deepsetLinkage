@@ -1,18 +1,18 @@
 {
-    "path" : "squeeze5net_scoReLU",
+    "path" : "linear_noforce",
     "n_trials" : 8,
     "n_epochs" : 50,
     "patience" : 3,
 
-    "feature_dim" : 5,
+    "feature_dim" : 14,
 
 
     "thresh" : "find",
-    "teacher_force" : 1.0,
+    "teacher_force" : 0.0,
 
     "margin" : 2,
     "lr" : 0.01,
-    "wd" : 0.001,
-    "linear" : false,
+    "wd" : 0.01,
+    "linear" : true,
     "use_gpu" : true
 }
