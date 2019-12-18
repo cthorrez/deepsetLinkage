@@ -1,7 +1,7 @@
 {
-    "path" : "fd_net",
+    "path" : "test_net",
     "n_trials" : 8,
-    "n_epochs" : 50,
+    "n_epochs" : 25,
     "patience" : 3,
 
     "feature_dim" : 14,
@@ -9,6 +9,6 @@
     "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,
-    "linear" : true,
+    "linear" : false,
     "use_gpu" : true
 }
