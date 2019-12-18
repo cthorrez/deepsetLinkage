@@ -203,12 +203,12 @@ class HAC():
 
         # this line might be optional idk yet
         # trying not dividing
-        epoch_loss = epoch_loss
+        epoch_loss = epoch_loss / iterations
 
         epoch_loss.backward()
         self.model.optimizer.step()
         self.model.optimizer.zero_grad()
-        out = float(epoch_loss)  / iterations
+        out = float(epoch_loss)
         # print('epoch_loss:', out)
         return out
 
