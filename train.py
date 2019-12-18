@@ -125,7 +125,11 @@ def train(args, seed=0):
         print('{} best f1: {} best link: {}'.format(vb, best_f1, best_link))
 
 
-    best_thresh = find_thresh(link_list, f1_list)
+    if args['thresh'] == 'find':
+        print('finding best thresh')
+        best_thresh = find_thresh(link_list, f1_list)
+    else:
+        best_thresh = float(args['thresh'])
     print('best threshold:', best_thresh)
 
 

@@ -6,6 +6,7 @@
 
     "feature_dim" : 14,
 
+    "thresh" : "find",
     "margin" : 2,
     "lr" : 0.01,
     "wd" : 0.01,

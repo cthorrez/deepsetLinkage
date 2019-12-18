@@ -277,7 +277,7 @@ class HAC():
     # cluster using the given linkage function but don't train
     # does not force it to do pure clusterings. Stop when the minimum linkage available in greater than thresh
     # return the 1 score of the flat clustering at the stopping point
-    def get_test_f1(self, thresh):
+    def get_test_f1(self, thresh=0):
         with torch.no_grad():
 
             print(len(self.gt_clusters), 'data points')
