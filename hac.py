@@ -65,9 +65,6 @@ class HAC():
             idxs = np.arange(i+1,self.n_points)
             linkage_matrix[i,idxs] = self.model.score_batch(self.feature_tensor[i,idxs,:]).squeeze()
 
-            
-        
-
 
         self.linkage_matrix = linkage_matrix
         self.pure_mask = pure_mask
