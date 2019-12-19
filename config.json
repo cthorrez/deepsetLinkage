@@ -1,5 +1,5 @@
 {
-    "path" : "linear_yesdivide",
+    "path" : "linear_1d",
     "n_trials" : 8,
     "n_epochs" : 100,
     "patience" : 3,

@@ -55,7 +55,7 @@ class HAC():
 
     def set_linkage_matrix(self):
         linkage_matrix = torch.FloatTensor(np.zeros((self.n_points, self.n_points)) + np.inf).to(self.device)
-
+        
         gt_matrix = torch.LongTensor(self.gt_clusters).repeat(self.n_points,1).to(self.device)
         pure_mask = gt_matrix.t() == gt_matrix
         triu_mask = ~torch.tril(torch.ones(self.n_points, self.n_points, dtype=torch.bool).to(self.device))
@@ -63,9 +63,12 @@ class HAC():
 
         for i in range(self.n_points-1):
             idxs = np.arange(i+1,self.n_points)
-            linkage_matrix[i,idxs] = self.model.score_batch(self.feature_tensor[i,idxs,:].unsqueeze(1)).squeeze()
+            linkage_matrix[i,idxs] = self.model.score_batch(self.feature_tensor[i,idxs,:]).squeeze()
 
+            
         
+
+
         self.linkage_matrix = linkage_matrix
         self.pure_mask = pure_mask
 

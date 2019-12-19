@@ -27,7 +27,6 @@ class DeepSetLinkage():
             self.feature_fn = nn.Sequential(
                                     nn.Linear(in_dim, feature_dim),
                                     nn.ReLU(),
-                                    nn.Linear(feature_dim, feature_dim)
                                 )
 
             self.scoring_fn = nn.Sequential(
@@ -49,11 +48,13 @@ class DeepSetLinkage():
         mu = torch.mean(pairs, dim=0, keepdim=True)
         return self.scoring_fn(mu)
 
+
+    # only use on batches of linkages between singleton clusters
+    # can batch becasue don't need to take the mean when there is only 1 input
+    # only called during set_linkage_matrix
     def score_batch(self, pairs):
-        # input is (bs, n, d), output is (bs, 1)        
-        mu = torch.mean(pairs, dim=1, keepdim=False)
-        x = self.scoring_fn(mu)
-        # print('result of score_batch:', x.shape)
+        # input is (bs, d), output is (bs, 1)        
+        x = self.scoring_fn(pairs)
         return x
 
 
